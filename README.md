@@ -4,7 +4,7 @@ Studying Acidobacteria reads.
 
 Author __Samantha C Pendleton__
 
-[**Kaiju**]](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
+[**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
 - Input Kaiju Output after extracting the two columns: sequence ID and NCBI taxonomy list (`result_seqid_taxon.csv`), plus the list of NCBI taxons of Acidobacteria (`acido_taxid.csv`)
 - Output FASTA file of all the matched Acidobacteria reads
@@ -18,15 +18,9 @@ Author __Samantha C Pendleton__
 ###### Files
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
 
-1. Filter the output with only classified labels
-2. Cut the columns
-3. Converted the txt to csv (comma-delimted).
-
-`$ awk '$1 == "C"' kaiju.out > kaijuC.out`
-
-`$ cut -f2,3 kaijuC.out > results.txt`
-
-`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
+1. Filter the output with only classified labels	`$ awk '$1 == "C"' kaiju.out > kaijuC.out`
+2. Cut the columns					`$ cut -f2,3 kaijuC.out > results.txt`
+3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
 ## Usage
 Use this file first: `kaiju_taxon_search.py`
@@ -50,3 +44,5 @@ This file is what you should input into the other **Python** scripts, e.g. `AGCT
 - [ ] Alter code so the input file can be the original Kaiju output
 
 ## Thank you! :seedling:
+
+Don't hesitate to create an issue or make a suggestion!
