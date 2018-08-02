@@ -1,13 +1,14 @@
 # acidoseq
 
-Studying Acidobacteria reads.
+Studying Acidobacteria reads | Beta Version (v0.1)
 
 Author __Samantha C Pendleton__
 
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
-- Input Kaiju Output after extracting the two columns: sequence ID and NCBI taxonomy list (`result_seqid_taxon.csv`), plus the list of NCBI taxons of Acidobacteria (`acido_taxid.csv`)
-- Output FASTA file of all the matched Acidobacteria reads
+- Input Kaiju Output after extracting the two columns: sequence ID and NCBI taxonomy list (`result_seqid_taxon.csv`) - you will need to gain this yourself!
+- The list of NCBI taxons of Acidobacteria (`acido_taxid.csv`), in folder **input**
+- Output FASTA file of all the matched Acidobacteria reads (`acido_reads_2018-07-28_22-28-17.fa`)
 - Input this FASTA file to the other scripts
 
 ## Installation
