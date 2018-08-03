@@ -50,8 +50,8 @@ def plot_hist(myDict, style):
 
 if __name__ == "__main__":    
     time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())     
-    path = input("enter fasta file: ") # acido_reads_2018-07-28_22-28-17.fa
-    fasta = pysam.FastaFile("/home/samantha/Dissertation/python/%s" % path) 
+    path = input("Enter FAST file: ") # e.g. acido_reads_2018-07-28_22-28-17.fa
+    fasta = pysam.FastaFile(path) 
 
     reads = list_of_sequences(fasta)   
     max_read = len(max(reads, key=len))

@@ -6,8 +6,10 @@ Author __Samantha C Pendleton__
 
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
+###### Prerequisite
 - Input Kaiju Output after extracting the two columns: sequence ID and NCBI taxonomy list (`result_seqid_taxon.csv`) - you will need to gain this yourself!
-- The list of NCBI taxons of Acidobacteria (`acido_taxid.csv`), in folder **input**
+- Input list of NCBI taxons of Acidobacteria (`acido_taxid.csv`), in folder **input**
+- Input the FASTA format: you will need a file of all the reads!
 - Output FASTA file of all the matched Acidobacteria reads (`acido_reads_2018-07-28_22-28-17.fa`)
 - Input this FASTA file to the other scripts
 
@@ -29,6 +31,9 @@ Use this file first: `kaiju_taxon_search.py`
 ###### Input
 Result csv file (`result_seqid_taxon.csv`) of the sequence IDs and NCBI taxons from the Kaiju output. 
 List of all the NCBI taxonomy numbers and their corresponding Acidobacteria species (`acido_taxid.csv`).
+Plus the **FASTA** of all your reads.
+
+**Note**: you will need to include file directory paths!
 
 ###### Output
 FASTA file: list of the reads which match the Acidobacteria taxons: `acido_reads_2018-07-28_22-28-17.fa`

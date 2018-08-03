@@ -32,9 +32,11 @@ def percentage(part, whole):
 #####
 
 if __name__ == "__main__":
-    taxons = load_taxondump("/home/samantha/Dissertation/python/acido_taxid.csv")
-    taxon_read_map = insert_csv("/home/samantha/Dissertation/python/result_seqid_taxon.csv")       
-    
+    acido_genomes = input("Enter Acidobacteria Genomes: ") # path to acido_taxid.csv e.g. /input/acido_taxid.csv
+    taxons = load_taxondump(acido_genomes)     
+    path = input("Enter your Kaiju Output (edited) file: ") # e.g. result_seqid_taxon.csv
+    taxon_read_map = insert_csv(path)
+
     has_taxon = 0
     total_reads = 0
     numrec = 0
@@ -53,8 +55,9 @@ if __name__ == "__main__":
             continue
     print("acido coverage of file", percentage(has_taxon, total_reads))
     
-    time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())    
-    fasta = pysam.FastaFile("/home/samantha/Dissertation/all.fa")
+    time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())   
+    all_fasta_path = input("Enter the FASTA file of all reads: ") # e.g. all_reads.fa
+    fasta = pysam.FastaFile(all_fasta_path)
     with open("acido_reads_%s.fa" % (time_stamp), "w") as output:
         for r in acido_reads:                                                                                                   
             seq = fasta.fetch(reference=r) 

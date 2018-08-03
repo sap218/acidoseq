@@ -30,8 +30,8 @@ def counting_acgt(list): # getting ACGT count for each sequence
 ##########
 
 if __name__ == "__main__":
-    path = input("enter fasta file: ") # acido_reads_2018-07-28_22-28-17.fa
-    fasta = pysam.FastaFile("/home/samantha/Dissertation/python/%s" % path) 
+    path = input("Enter FASTA file: ") # e.g. acido_reads_2018-07-28_22-28-17.fa
+    fasta = pysam.FastaFile(path) 
 
     reads = list_of_sequences(fasta)
     #results = counting_acgt(reads)
