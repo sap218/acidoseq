@@ -14,13 +14,15 @@ def calculate_gc(seq):
     return (seq.lower().count("g") + seq.lower().count("c")) / len(seq) * 100.0
 
 def plot_hist(myDict, style): 
-    subdivisions = {"sub1":58, "sub2":57.6, "sub3":62,"sub4":60,"sub5":65.5,"sub6":67.2,"sub8":66.8,"sub13":58.5,"sub22":67.15,"sub23":63}
-    
+    #subdivisions = {"sub1":58, "sub2":57.6, "sub3":62,"sub4":60,"sub5":65.5,"sub6":67.2,"sub8":66.8,"sub13":58.5,"sub22":67.15,"sub23":63}
     plt.style.use(style)
     plt.hist(myDict.values(), bins=1000) 
     plt.xlabel('GC Ratio')   
-    plt.ylabel('Count')
-    
+    plt.ylabel('Count')   
+    myDict_mean = (sum(myDict.values())/float(len(myDict.values())))
+    plt.axvline(myDict_mean, color='k')
+    plt.text(x=(myDict_mean+1), y=(random.randint(100,1300)), s=str(myDict_mean))
+    ''' # this stuff is a working progress, please be patient :-)
     for sub in subdivisions:
         plt.axvline(subdivisions[sub], color='k')
         plt.text(x=(subdivisions[sub]), y=(random.randint(100,1300)), s=str(sub))
@@ -34,11 +36,11 @@ def plot_hist(myDict, style):
     plt.axvspan(57, 59, alpha=0.5, color='darkblue') # 13
     plt.axvspan(66.8, 67.5, alpha=0.5, color='darkgreen') # 22
     plt.axvspan(62, 64, alpha=0.5, color='red') # 23
-        
+    '''        
     plt.title('Histogram of GC ratio for a collection\nof Acidobacteria sequences')
     plt.grid(True)
     #plt.show()
-    plt.savefig('gc-ratio_%s.png' % time_stamp)
+    plt.savefig('gc-ratio_style-%s__%s.png' % (style, time_stamp))
     
 #######
     

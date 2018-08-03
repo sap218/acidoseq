@@ -9,6 +9,7 @@ import pysam
 import collections
 import matplotlib.pyplot as plt
 from time import gmtime, strftime
+import random
 
 ############################
 
@@ -39,12 +40,12 @@ def plot_hist(myDict, style):
     
     meanDict = (sum(myDict.values())/float(len(myDict.values())))
     plt.axvline(x=meanDict, color='k')
-    plt.text(x=meanDict, y=meanDict, s=str("%.2f" % meanDict))
+    plt.text(x=(meanDict+1), y=(random.randint(100,1300)), s=str("%.2f" % meanDict))
     
     plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
     plt.grid(True)
     #plt.show()
-    plt.savefig('acgt_%s.png' % time_stamp)
+    plt.savefig('acgt-comparison_style-%s_%s.png' % (style, time_stamp))
 
 ###############################
 
