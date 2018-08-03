@@ -41,7 +41,7 @@ FASTA file: list of the reads which match the Acidobacteria taxons: `acido_reads
 This file is what you should input into the other **Python** scripts, e.g. `AGCT.py`.
 
 ## Acknowledgements
-* **Amanda Clare**, supervisor, [Twitter](https://twitter.com/afc) | [GitHub](https://github.com/amandaclare)
+* **Amanda Clare**, supervisor, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
 * **Sam Nicholls**, developer, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
 
 ###### Todo List
