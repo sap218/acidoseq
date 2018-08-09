@@ -4,6 +4,14 @@ Studying Acidobacteria reads | Beta Version (v0.1)
 
 Author __Samantha C Pendleton__
 
+The **GC** content of the Acidobacteria genomes are consistent with their placements, e.g. species in the same subdivision (above 60\% for group V fragments and roughly 10\% lower for group III fragments) are similar, displaying the diversity within the phylum [1].
+
+The abundance of the subdivisions correlate with pH depends on the subdivisions: 1, 2, 3, 12, 13 have a negative relationship as pH increases, whilst 4, 6, 7, 10, 11, 16, 17, 18, 22, 25 are sparse in low pH and have a positive relationship as pH increases [2].
+
+This package includes assigning unclassified Acidobacteria reads you have collected into subdivisions based on the pH level of the soils. **Note**: not all set-up yet.
+
+## Introduction
+
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
 ###### Prerequisite
@@ -16,7 +24,11 @@ Author __Samantha C Pendleton__
 ## Installation
 
 ###### Pip
-**Note**: for now you can copy the scripts yourself, just make sure you edit the file paths!
+**Note**: no installations set up yet, for now you can copy/download the scripts yourself, just make sure you edit the file paths when you run it - run like followed with **Linux**:
+
+`python kaiju_taxon_search.py`
+
+Find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).
 
 ###### Files
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
@@ -41,14 +53,20 @@ FASTA file: list of the reads which match the Acidobacteria taxons: `acido_reads
 This file is what you should input into the other **Python** scripts, e.g. `AGCT.py`.
 
 ## Acknowledgements
-* **Amanda Clare**, supervisor, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
-* **Sam Nicholls**, developer, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
+* **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
+* **Sam Nicholls**, postdoc at Birmingham University, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
 
 ###### Todo List
 - [x] Make available
 - [ ] Improve descriptions and comments
 - [ ] Alter code so the input file can be the original Kaiju output
+- [ ] Look into command line interface
 
 ## Thank you! :seedling:
 
 Don't hesitate to create an issue or make a suggestion!
+
+###### References
+[1] Quaiser, A., Ochsenreiter, T., Lanz, C., Schuster, S. C., Treusch, A. H., Eck, J., & Schleper, C. (2003). Acidobacteria form a coherent but highly diverse group within the bacterial domain: evidence from environmental genomics. Molecular microbiology, 50(2), 563-575.
+
+[2] Eichorst, S. A., Breznak, J. A., & Schmidt, T. M. (2007). Isolation and characterization of soil bacteria that define Terriglobus gen. nov., in the phylum Acidobacteria. Applied and environmental microbiology, 73(8), 2708-2717.
