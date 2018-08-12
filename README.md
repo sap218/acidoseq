@@ -40,7 +40,7 @@ You will then be prompted to locate the csv I provided (`latlon.csv`) and the lo
 
 `Insert city (case-sensitive): "Aberystwyth"`
 
-You will then gain an image (e.g. `location_soil-ph_2018-08-12_18-16-57.png`) of in that same file directory. **Note**: see how I input quotation marks around the inputs. You can observe an example of this image in the **Example** folder.
+You will then gain an image (e.g. `location_soil-ph_2018-08-12_18-16-57.png`) of in that same file directory. **Note**: see how I input quotation marks around the inputs. You can observe an example of a map plot, Liverpool, in the **example** folder.
 
 ###### Files
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
