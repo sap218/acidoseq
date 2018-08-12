@@ -24,7 +24,7 @@ This package includes assigning unclassified Acidobacteria reads you have collec
 ## Installation
 
 ###### Pip
-**Note**: no installations set up yet, for now you can copy/download the scripts yourself, just make sure you edit the file paths when you run it - run like followed with **Linux**:
+**Note**: no installations set up yet, for now you can copy/download the scripts yourself, just make sure you edit the file paths when you run it, or add the correct files into the same directory for ease of use (rather than include the whole file directory, e.g. `\home\samantha\...`) - run like followed with **Linux**:
 
 `python kaiju_taxon_search.py`
 
