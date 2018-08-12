@@ -13,7 +13,7 @@ import random
 
 ############################
 
-def list_of_sequences(fasta): # list of sequences, e.g. ['AGCT', 'TAGC']
+def list_of_sequences(fasta): # list of sequences, e.g. ['ACACCT', 'TAGC']
     reads = []
     for read in fasta.references:
         reads.append(fasta.fetch(read))
@@ -28,8 +28,10 @@ def counting_acgt(list): # getting ACGT count for each sequence
     return results
 
 def calculate_at(seq):
+    """Returns AT count."""
     return (seq.lower().count("a") + seq.lower().count("t")) / len(seq) * 100.0
 def calculate_gc(seq):
+    """Returns GC count."""
     return (seq.lower().count("g") + seq.lower().count("c")) / len(seq) * 100.0
 
 def plot_hist(myDict, style): 
@@ -67,10 +69,12 @@ if __name__ == "__main__":
         gc[read] = calculate_gc(fasta.fetch(read))
     max_at = max(at.values())
     min_at = min(at.values())  
-    print("AT\tMin: %f\tMax: %f" % (min_at, max_at))
+    mean_at = (sum(at.values())/float(len(at.values())))
+    print("AT\tMin: %f\tMax: %f\tMean: %f" % (min_at, max_at, mean_at))
     max_gc = max(gc.values())
     min_gc = min(gc.values())  
-    print("GC\tMin: %f\tMax: %f" % (min_gc, max_gc))
+    mean_gc = (sum(gc.values())/float(len(gc.values())))
+    print("GC\tMin: %f\tMax: %f\tMean: %f" % (min_gc, max_gc))
 
     print(plt.style.available)
     style = input("insert style you want: ")
