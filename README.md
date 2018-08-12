@@ -30,6 +30,18 @@ This package includes assigning unclassified Acidobacteria reads you have collec
 
 Find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).
 
+**Example**
+
+`python location-map.py`
+
+You will then be prompted to locate the csv I provided (`latlon.csv`) and the location of your soil sample, which you should input:
+
+`Insert location of csv filename: "latlon.csv"`
+
+`Insert city (case-sensitive): "Aberystwyth"`
+
+You will then gain an image (e.g. `location_soil-ph_2018-08-12_18-16-57.png`) of in that same file directory. **Note**: see how I input quotation marks around the inputs. You can observe an example of this image in the **Example** folder.
+
 ###### Files
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
 
