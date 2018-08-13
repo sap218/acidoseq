@@ -17,6 +17,8 @@ This package includes assigning unclassified Acidobacteria reads you have collec
 - FASTA format of all the reads.
 - Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
+I would store these in the working directory, but not specifically in the input folder.
+
 ## Installation
 
 **GitClone**
