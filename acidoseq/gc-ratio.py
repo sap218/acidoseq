@@ -44,39 +44,39 @@ def plot_hist(myDict, style, ph, plot_type):
         if ph < 5:
             for si, sub in enumerate(lowph):
                 plt.axvline(lowph[sub], color=colours[si])
-                plt.text(x=(lowph[sub]+0.5), y=(random.randint(100,1300)), s=str(sub))
+                plt.text(x=(lowph[sub]+0.5), y=(random.randint(100,500)), s=str(sub))
         elif ph > 5:
             for si, sub in enumerate(highph):
                 plt.axvline(highph[sub], color=colours[si])
-                plt.text(x=(highph[sub]+0.5), y=(random.randint(100,1300)), s=str(sub))
+                plt.text(x=(highph[sub]+0.5), y=(random.randint(100,500)), s=str(sub))
         elif ph == 5:
             for si, sub in enumerate(medph):
                 plt.axvline(medph[sub], color=colours[si])
-                plt.text(x=(medph[sub]+0.5), y=(random.randint(100,1300)), s=str(sub))    
+                plt.text(x=(medph[sub]+0.5), y=(random.randint(100,500)), s=str(sub))    
     elif plot_type == "span":
         if ph < 5:
             plt.axvspan(35.18, 57, alpha=0.5, color='green') # 1 
-            plt.text(x=(35.18), y=(random.randint(100,1300)), s="sub1")
+            plt.text(x=(35.18), y=(random.randint(100,500)), s="sub1")
             plt.axvspan(57.5, 57.7, alpha=0.5, color='yellow') # 2 
-            plt.text(x=(57.5), y=(random.randint(100,1300)), s="sub2")
+            plt.text(x=(57.5), y=(random.randint(100,500)), s="sub2")
             plt.axvspan(61, 63, alpha=0.5, color='blue') # 3
-            plt.text(x=(61), y=(random.randint(100,1300)), s="sub3")
+            plt.text(x=(61), y=(random.randint(100,500)), s="sub3")
             plt.axvspan(58, 59, alpha=0.5, color='darkblue') # 13
-            plt.text(x=(58), y=(random.randint(100,1300)), s="sub13")
+            plt.text(x=(58), y=(random.randint(100,500)), s="sub13")
         elif ph > 5:
             plt.axvspan(50, 60, alpha=0.5, color='yellow') # 4 
-            plt.text(x=(50), y=(random.randint(100,1300)), s="sub4")
+            plt.text(x=(50), y=(random.randint(100,500)), s="sub4")
             plt.axvspan(67, 68, alpha=0.5, color='green') # 6 
-            plt.text(x=(67), y=(random.randint(100,1300)), s="sub6")
+            plt.text(x=(67), y=(random.randint(100,500)), s="sub6")
             plt.axvspan(66, 67.5, alpha=0.5, color='darkgreen') # 22 
-            plt.text(x=(66), y=(random.randint(100,1300)), s="sub22")
+            plt.text(x=(66), y=(random.randint(100,500)), s="sub22")
         elif ph == 5:
             plt.axvspan(62.5, 68, alpha=0.5, color='orange') # 5
-            plt.text(x=(62.5), y=(random.randint(100,1300)), s="sub5")
+            plt.text(x=(62.5), y=(random.randint(100,500)), s="sub5")
             plt.axvspan(55, 66, alpha=0.5, color='pink') # 8
-            plt.text(x=(55), y=(random.randint(100,1300)), s="sub8")
+            plt.text(x=(55), y=(random.randint(100,500)), s="sub8")
             plt.axvspan(62, 64, alpha=0.5, color='red') # 23        
-            plt.text(x=(62), y=(random.randint(100,1300)), s="sub12")
+            plt.text(x=(62), y=(random.randint(100,500)), s="sub12")
         
     plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of Acidobacteria sequences' % (ph))
     #plt.grid(True)

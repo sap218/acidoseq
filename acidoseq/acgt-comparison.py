@@ -42,7 +42,7 @@ def plot_hist(myDict, style):
     
     meanDict = (sum(myDict.values())/float(len(myDict.values())))
     plt.axvline(x=meanDict, color='k')
-    plt.text(x=(meanDict+1), y=(random.randint(100,1300)), s=str("%.2f" % meanDict))
+    plt.text(x=(meanDict+1), y=(random.randint(100,500)), s=str("%.2f" % meanDict))
     
     plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
     plt.grid(True)
@@ -53,7 +53,7 @@ def plot_hist(myDict, style):
 
 if __name__ == "__main__":    
     time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())     
-    path = input("Enter FAST file: ") # e.g. acido_reads_2018-07-28_22-28-17.fa
+    path = input("Enter FASTA file: ") # e.g. acido_reads_2018-07-28_22-28-17.fa
     fasta = pysam.FastaFile(path) 
 
     reads = list_of_sequences(fasta)   
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     max_gc = max(gc.values())
     min_gc = min(gc.values())  
     mean_gc = (sum(gc.values())/float(len(gc.values())))
-    print("GC\tMin: %f\tMax: %f\tMean: %f" % (min_gc, max_gc))
+    print("GC\tMin: %f\tMax: %f\tMean: %f" % (min_gc, max_gc, mean_gc))
 
     print(plt.style.available)
     style = input("insert style you want: ")
