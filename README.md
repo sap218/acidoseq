@@ -1,8 +1,8 @@
 # acidoseq
 
-Studying Acidobacteria reads | Beta Version (v0.1) | Python v3.5
+Studying Acidobacteria reads | Beta Version (v0.1) | Python v3.5 
 
-Author __Samantha C Pendleton__
+Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
 The **GC** content of the Acidobacteria genomes are consistent with their placements, e.g. species in the same subdivision (above 60\% for group V fragments and roughly 10\% lower for group III fragments) are similar, displaying the diversity within the phylum [1].
 
