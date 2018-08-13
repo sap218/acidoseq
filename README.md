@@ -1,8 +1,10 @@
 # acidoseq
 
-Studying Acidobacteria reads | Beta Version (v0.1)
+Studying Acidobacteria reads | Beta Version (v0.1) | Python v3.5
 
 Author __Samantha C Pendleton__
+
+Please **note**: running through a terminal doesn't seem to operate, however when I use it with Spyder the scripts work.
 
 The **GC** content of the Acidobacteria genomes are consistent with their placements, e.g. species in the same subdivision (above 60\% for group V fragments and roughly 10\% lower for group III fragments) are similar, displaying the diversity within the phylum [1].
 
@@ -11,26 +13,20 @@ The abundance of the subdivisions correlate with pH depends on the subdivisions:
 This package includes assigning unclassified Acidobacteria reads you have collected into subdivisions based on the pH level of the soils. **Note**: not all set-up yet.
 
 ## Introduction
-
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
 ###### Prerequisite
-- Input Kaiju Output after extracting the two columns: sequence ID and NCBI taxonomy list (`result_seqid_taxon.csv`) - you will need to gain this yourself!
-- Input list of NCBI taxons of Acidobacteria (`acido_taxid.csv`), in folder **input**
-- Input the FASTA format: you will need a file of all the reads!
-- Output FASTA file of all the matched Acidobacteria reads (`acido_reads_2018-07-28_22-28-17.fa`)
-- Input this FASTA file to the other scripts
+- FASTA format of all the reads.
+- Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
 ## Installation
 
-###### Pip
-**Note**: no installations set up yet, for now you can copy/download the scripts yourself, just make sure you edit the file paths when you run it, or add the correct files into the same directory for ease of use (rather than include the whole file directory, e.g. `\home\samantha\...`) - run like followed with **Linux**:
+**GitClone**
 
-`python kaiju_taxon_search.py`
+Note: no command line interface properly set-up as of yet: installations set up through GitClone and I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory.
 
-Find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).
+**Kaiju**
 
-###### Files
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
 
 1. Filter the output with only classified labels	`$ awk '$1 == "C"' kaiju.out > kaijuC.out`
@@ -38,22 +34,44 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
 ## Usage
-Use this file first: `kaiju_taxon_search.py`
+Run like followed with **Linux**(find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
 
-###### Input
-Result csv file (`result_seqid_taxon.csv`) of the sequence IDs and NCBI taxons from the Kaiju output. 
-List of all the NCBI taxonomy numbers and their corresponding Acidobacteria species (`acido_taxid.csv`).
-Plus the **FASTA** of all your reads.
+`python acidoseq.py`
 
-**Note**: you will need to include file directory paths!
+**Input**
 
-###### Output
-FASTA file: list of the reads which match the Acidobacteria taxons: `acido_reads_2018-07-28_22-28-17.fa`
+First the script will require information about Acidobacteria data type (all/unclassified), the location of your Kaiju results plus the FASTA file:
 
-This file is what you should input into the other **Python** scripts, e.g. `acgt-comparison.py` and `gc-ratio.py`.
+`All species or only unclassified ('all' or 'U')?` `'U'`
 
-**Example**
+`Enter your Kaiju Output (edited) file:` `'result_seqid_taxon.csv'`
 
+`Enter the FASTA file of all reads:` `'all.fa'`
+
+**Output**
+
+All outputs will deposit in the **output** file.
+
+The first output includes a FASTA of the reads which are Acidobacteria, either all or only the unclassified depending on your first input. 
+
+`acido-reads_U_2018-08-13_11-58-06.fa`
+
+The terminal will then provide some statistics of the data: Acidobacteria coverage, read-lengths, min/max of AT/GC, plus the means.
+
+Afterwards, you will be prompted for a plotting style (it provides you a selection of styles):
+
+`Insert the style you want:` `ggplot`
+
+For the subdivisions comparison for the GC ratio you will be asked for what kind of plot:
+
+`Enter plot type ('span' or 'line'):` `'span'`
+
+Finally, you will be asked about pH:
+
+`Insert pH of soil:` `'3.23'`
+
+
+## Map
 `python location-map.py`
 
 You will then be prompted to locate the csv I provided (`latlon.csv`) and the location of your soil sample, which you should input:
@@ -70,7 +88,7 @@ You will then gain an image (e.g. `location_soil-ph_2018-08-12_18-16-57.png`) of
 
 ###### Todo List
 - [x] Make available
-- [ ] Improve descriptions and comments
+- [x] Improve descriptions and comments
 - [ ] Alter code so the input file can be the original Kaiju output
 - [ ] Look into command line interface
 
