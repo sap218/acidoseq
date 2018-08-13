@@ -62,7 +62,7 @@ def calculate_gc(seq):
     """Returns GC count."""
     return (seq.lower().count("g") + seq.lower().count("c")) / len(seq) * 100.0
 
-def plot_hist(myDict, style): 
+def plot_hist(myDict, style, tax_type): 
     plt.style.use(style)
     plt.hist(myDict.values(), bins=1000) 
     plt.xlabel('Ratio')   
@@ -71,11 +71,17 @@ def plot_hist(myDict, style):
     meanDict = (sum(myDict.values())/float(len(myDict.values())))
     plt.axvline(x=meanDict, color='k')
     plt.text(x=(meanDict+1), y=(random.randint(50,500)), s=str("%.2f" % meanDict))
-    
-    plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
+
+    if tax_type == "U":
+        ttype = "unclassified"
+        plt.title('Histogram of ACGT for a collection of\n%s Acidobacteria sequences' % (ttype))
+    elif tax_type == "all":
+        ttype = "all"
+        plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
+
     plt.grid(True)
     #plt.show()
-    plt.savefig('output/acgt-comparison_style-%s_%s.png' % (style, time_stamp))
+    plt.savefig('output/acgt-comparison_%s_style-%s_%s.png' % (ttype, style, time_stamp))
 
 ######################################################
 
@@ -189,7 +195,7 @@ if __name__ == "__main__":
             continue
         
     acido_coverage = percentage(has_taxon, total_reads)
-    print("Acidobacteria coverage of file: %.2f" % (acido_coverage))
+    print("\nAcidobacteria coverage of file: %.2f\n" % (acido_coverage))
       
     all_fasta_path = input("Enter the FASTA file of all reads: ") # e.g. all_reads.fa
     fasta = pysam.FastaFile(all_fasta_path)
@@ -232,8 +238,8 @@ if __name__ == "__main__":
     
     x = 1
     plt.figure(x)    
-    plot_hist(at, style)
-    plot_hist(gc, style)
+    plot_hist(at, style, taxdump_type)
+    plot_hist(gc, style, taxdump_type)
     
 ######################################################
     
