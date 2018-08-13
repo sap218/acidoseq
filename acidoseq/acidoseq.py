@@ -11,6 +11,8 @@ import collections
 import matplotlib.pyplot as plt
 import random
 
+import inspect, re
+
 # Kaiju input and Acidobacteria read outputs
 
 def insert_csv(file):
@@ -128,7 +130,7 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
                 plt.text(x=(medph[sub]+0.5), y=(random.randint(50,500)), s=str(sub))    
     elif plot_type == "span":
         if ph < 5:
-            plt.axvspan(35.18, 57, alpha=0.5, color='green') # 1 
+            plt.axvspan(35, 57, alpha=0.5, color='green') # 1 
             plt.text(x=(35.18), y=(random.randint(50,500)), s="sub1")
             plt.axvspan(57.5, 57.7, alpha=0.5, color='yellow') # 2 
             plt.text(x=(57.5), y=(random.randint(50,500)), s="sub2")
@@ -149,7 +151,7 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
             plt.axvspan(55, 66, alpha=0.5, color='pink') # 8
             plt.text(x=(55), y=(random.randint(50,500)), s="sub8")
             plt.axvspan(62, 64, alpha=0.5, color='red') # 23        
-            plt.text(x=(62), y=(random.randint(50,500)), s="sub12")
+            plt.text(x=(62), y=(random.randint(50,500)), s="sub23")
         
     if tax_type == "U":
         ttype = "unclassified"
@@ -161,6 +163,49 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
     #plt.show()
     plt.savefig('output/gc-ratio_%s_ph%.2f_plot-%s_style-%s_%s.png' % (ttype, ph, plot_type, style, time_stamp))
 
+######################################################
+
+def varname(p): # https://stackoverflow.com/a/592849
+  for line in inspect.getframeinfo(inspect.currentframe().f_back)[3]:
+    m = re.search(r'\bvarname\s*\(\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)', line)
+    if m:
+      return m.group(1)
+
+# Output subdivisions - this is a working progess :-)
+
+def output_sub(tax_type, ph, gc_dict):
+    sub1 = [35, 57] # low 
+    sub2 = [57, 58]
+    sub3 = [61,63]
+    sub13 = [58,61]
+    sub12 = [63] # < 
+    sub4 = [50, 60] # high
+    sub6 = [67, 68]
+    sub22 = [65.5, 67]
+    other1 = [50] # >
+    other2 = [60, 65.5] # 7, 10, 11, 16, 17, 18, 25
+    other3 = [68] # <
+    sub5 = [64, 68] # med
+    sub8 = [55,62]
+    sub23 = [62,64]
+    
+    sub1seq = {}
+    sub2seq = {}        
+        
+    if tax_type == "all":
+        pass
+    elif tax_type == "U":       
+        for key,val in gc_dict.items():
+            if val > sub1[0] and val < sub1[1]: 
+                sub1seq[key] = val
+            elif val > sub2[0] and val < sub2[1]:
+                sub2seq[key] = val
+                
+        sub = varname(sub1seq)
+        path = ("output/%s_%s_acido_%s.fa" % (sub, tax_type, time_stamp))     
+        with open(path, "w") as output:
+            for r in gc_dict:                    
+                output.write("%s\n" % (r))
 
 ####################################################################################################
 ####################################################################################################
@@ -245,8 +290,14 @@ if __name__ == "__main__":
     
     # GC ratio
 
-    plot_type = input("Enter plot type ('span' or 'line'): ")
+    plot_type = input("Enter plot type - 'span' (region) or 'line' (means): ")
     ph = input("Insert pH of soil: ")
     x = 2
     plt.figure(x)    
     plot_hist_gc(gc, style, ph, plot_type, taxdump_type)
+
+######################################################
+
+    # Output subdivisions - this part is a working progress - please be patient :-)
+
+    output_sub(taxdump_type, ph, gc)
