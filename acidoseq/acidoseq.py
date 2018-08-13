@@ -79,7 +79,7 @@ def plot_hist(myDict, style):
 
 ######################################################
 
-# GC Ratio
+# GC ratio
 
 def plot_hist_gc(myDict, style, ph, plot_type, tax_type): 
     """Returns a plot of the GC ratio for a series of Acidobacteria sequences. 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
         taxons = load_taxondump("input/acido_taxid_all.csv") 
     if taxdump_type == "U":
         taxons = load_taxondump("input/acido_taxid_unclassified.csv")  
-    path = input("Enter your Kaiju Output (edited) file: ") # e.g. result_seqid_taxon.csv
+    path = input("Enter your Kaiju Output (edited) file: ") 
     taxon_read_map = insert_csv(path)
 
     has_taxon = 0
@@ -211,7 +211,7 @@ if __name__ == "__main__":
     reads = list_of_sequences(fasta)   
     max_read = len(max(reads, key=len))
     min_read = len(min(reads, key=len))
-    print("Read Lengths\tMin: %i\tMax: %i" % (min_read, max_read))
+    print("\n\nRead Lengths\tMin: %i\tMax: %i" % (min_read, max_read))
     
     at = {}
     gc = {}
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     max_gc = max(gc.values())
     min_gc = min(gc.values())  
     mean_gc = (sum(gc.values())/float(len(gc.values())))
-    print("GC\tMin: %f\tMax: %f\tMean: %f" % (min_gc, max_gc, mean_gc))
+    print("GC\tMin: %f\tMax: %f\tMean: %f\n\n" % (min_gc, max_gc, mean_gc))
 
     print(plt.style.available)
     style = input("Insert the style you want: ")
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     
 ######################################################
     
-    # GC Ratio
+    # GC ratio
 
     plot_type = input("Enter plot type ('span' or 'line'): ")
     ph = input("Insert pH of soil: ")
