@@ -34,11 +34,13 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
 ## Usage
-Run like followed with **Linux**(find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
+Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
 
 `python3 acidoseq.py`
 
 **Input**
+
+Insert the FASTA of all reads and the [edited] Kaiju output in the **input** folder.
 
 First the script will require information about Acidobacteria data type (all/unclassified), the location of your Kaiju results plus the FASTA file:
 
@@ -74,11 +76,9 @@ Finally, you will be asked about pH:
 ## Map
 `python3 location-map.py`
 
-You will then be prompted to locate the csv I provided (`latlon.csv`) and the location of your soil sample, which you should input:
+You will then be prompted to provide the location of your soil sample, which you should input:
 
-`Insert location of csv filename:` `latlon.csv`
-
-`Insert city (case-sensitive):` `Aberystwyth`
+`Insert city (case-sensitive, e.g. Aberystwyth):` `Liverpool`
 
 You will then gain an image in that same file directory.
 
