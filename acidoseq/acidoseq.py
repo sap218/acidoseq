@@ -65,7 +65,13 @@ def calculate_gc(seq):
     return (seq.lower().count("g") + seq.lower().count("c")) / len(seq) * 100.0
 
 def plot_hist(myDict, style, tax_type): 
-    plt.style.use(style)
+    try:
+        plt.style.use(style)
+    except OSError:
+        print("Style unrecognised, automatically choosing 'bmh'")
+        style = "bmh"
+        plt.style.use("bmh")
+        
     plt.hist(myDict.values(), bins=1000) 
     plt.xlabel('Ratio')   
     plt.ylabel('Count')
@@ -92,13 +98,20 @@ def plot_hist(myDict, style, tax_type):
 def plot_hist_gc(myDict, style, ph, plot_type, tax_type): 
     """Returns a plot of the GC ratio for a series of Acidobacteria sequences. 
     Includes the averages of the subdivisions based on the pH number."""
+    try:
+        plt.style.use(style)
+    except OSError:
+        print("Style unrecognised, automatically choosing 'bmh'")
+        style = "bmh"
+        plt.style.use("bmh")   
+    
     ph = float(ph)
-    plt.style.use(style)
+    
     plt.hist(myDict.values(), bins=1000, color="grey") 
     plt.xlabel('GC Ratio')   
     plt.ylabel('Count')  
     
-    if plot_type == "line":
+    if plot_type == "line": # mean GC
         lowph = {
             "sub1":58,
             "sub2":57.5,
@@ -128,7 +141,8 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
             for si, sub in enumerate(medph):
                 plt.axvline(medph[sub], color=colours[si])
                 plt.text(x=(medph[sub]+0.5), y=(random.randint(50,500)), s=str(sub))    
-    elif plot_type == "span":
+                
+    elif plot_type == "span": # span of GC 
         if ph < 5:
             plt.axvspan(35, 57, alpha=0.5, color='green') # 1 
             plt.text(x=(35.18), y=(random.randint(50,500)), s="sub1")
@@ -174,38 +188,81 @@ def varname(p): # https://stackoverflow.com/a/592849
 # Output subdivisions - this is a working progess :-)
 
 def output_sub(tax_type, ph, gc_dict):
+    ph = float(ph)    
+    
     sub1 = [35, 57] # low 
     sub2 = [57, 58]
-    sub3 = [61,63]
-    sub13 = [58,61]
-    sub12 = [63] # < 
+    sub3 = [61, 63]
+    sub13 = [58, 61]
+    sub12 = 63 # < 
+    
     sub4 = [50, 60] # high
     sub6 = [67, 68]
-    sub22 = [65.5, 67]
-    other1 = [50] # >
-    other2 = [60, 65.5] # 7, 10, 11, 16, 17, 18, 25
-    other3 = [68] # <
-    sub5 = [64, 68] # med
-    sub8 = [55,62]
-    sub23 = [62,64]
+    sub22 = [65, 67.5]
+    subHo = [50, 60, 64, 68] # 7, 10, 11, 14, 16, 17, 18, 25
     
-    sub1seq = {}
-    sub2seq = {}        
+    sub5 = [64, 68] # med
+    sub8 = [55, 62]
+    sub23 = [62, 64]
+    
+        
+    sub1seq = {} 
+    sub2seq = {}   
+    sub3seq = {} 
+    sub13seq = {} 
+    sub12eq = {} 
+    sub4seq = {} 
+    sub6seq = {} 
+    sub22seq = {} 
+    subHseq = {} # other high
+    sub5seq = {} 
+    sub8seq = {} 
+    sub23seq = {} 
+    
         
     if tax_type == "all":
         pass
     elif tax_type == "U":       
         for key,val in gc_dict.items():
-            if val > sub1[0] and val < sub1[1]: 
-                sub1seq[key] = val
-            elif val > sub2[0] and val < sub2[1]:
-                sub2seq[key] = val
-                
-        sub = varname(sub1seq)
-        path = ("output/%s_%s_acido_%s.fa" % (sub, tax_type, time_stamp))     
+            if ph < 5:    
+                if val > sub1[0] and val < sub1[1]:
+                    sub1seq[key] = val
+                elif val > sub2[0] and val < sub2[1]: 
+                    sub2seq[key] = val
+                elif val > sub3[0] and val < sub3[1]: 
+                    sub3seq[key] = val
+                elif val > sub13[0] and val < sub13[1]: 
+                    sub13seq[key] = val
+                elif val > sub12[0]: 
+                    sub12seq[key] = val
+                    
+            elif ph > 5:     
+                if val > sub4[0] and val < sub4[1]: 
+                    sub4seq[key] = val
+                elif val > sub6[0] and val < sub6[1]: 
+                    sub6seq[key] = val
+                elif val > sub22[0] and val < sub22[1]: 
+                    sub22seq[key] = val
+                elif val < subHo[0] or (val > subHo[1] and val < subHo[2]) or val > subHo[3]: # others
+                    subHseq[key] = val
+                    
+            elif ph == 5:
+                if val > sub5[0] and val < sub5[1]: 
+                    sub5seq[key] = val
+                elif val > sub8[0] and val < sub8[1]: 
+                    sub8seq[key] = val
+                elif val > sub23[0] and val < sub23[1]: 
+                    sub23seq[key] = val
+
+        #sub = []
+        #for s in range(12):
+        #    sub.append(str(varname(s)))
+        sub = varname(sub6seq)
+        
+        path = ("output/%s_ph%.2f_%s_%s.txt" % (sub, ph, tax_type, time_stamp))     
         with open(path, "w") as output:
-            for r in gc_dict:                    
-                output.write("%s\n" % (r))
+            for r in sub6seq:                    
+                output.write("%s\n" % (r))     
 
 ####################################################################################################
 ####################################################################################################
