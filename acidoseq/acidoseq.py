@@ -220,7 +220,7 @@ if __name__ == "__main__":
         taxons = load_taxondump("input/acido_taxid_all.csv") 
     if taxdump_type == "U":
         taxons = load_taxondump("input/acido_taxid_unclassified.csv")  
-    path = input("Enter your Kaiju Output (edited) file: ") 
+    path = input("Enter your Kaiju Output (edited) file: ") ############### REMEMBER TO PLACE IN DIRECTORY
     taxon_read_map = insert_csv(path)
 
     has_taxon = 0
@@ -233,7 +233,7 @@ if __name__ == "__main__":
         total_reads += len(taxon_read_map[taxon_id]["reads"])
         print("record", numrec)
         try:
-            taxon_read_map[taxon_id]["scientific_name"] = taxons[taxon_id] # try to find taxon id for acidobacteria
+            taxon_read_map[taxon_id]["scientific_name"] = taxons[taxon_id] # finding taxID for acidobacteria
             has_taxon += len(taxon_read_map[taxon_id]["reads"])
             acido_reads.extend(taxon_read_map[taxon_id]["reads"])
         except KeyError:
@@ -242,7 +242,7 @@ if __name__ == "__main__":
     acido_coverage = percentage(has_taxon, total_reads)
     print("\nAcidobacteria coverage of file: %.2f\n" % (acido_coverage))
       
-    all_fasta_path = input("Enter the FASTA file of all reads: ") # e.g. all_reads.fa
+    all_fasta_path = input("Enter the FASTA file of all reads: ") ############### REMEMBER TO PLACE IN DIRECTORY
     fasta = pysam.FastaFile(all_fasta_path)
     output_acido_file = ("output/acido-reads_%s_%s.fa" % (taxdump_type, time_stamp))
     with open(output_acido_file, "w") as output:
