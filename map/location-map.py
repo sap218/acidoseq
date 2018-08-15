@@ -11,7 +11,7 @@ from time import gmtime, strftime
 
 def plot_map(lon, lat, city):
     city = city.lower()
-    m = plt.imread("ukphsoil.png")
+    m = plt.imread("input/ukphsoil.png")
     plt.imshow(m, extent=[-9,2,50,59])
     plt.axis([-9,2,50,59])
     plt.plot(lon, lat, marker='x', markersize='10', color='white')
@@ -36,11 +36,9 @@ def look_in_csv(city, csv_path):
 if __name__ == "__main__":   
     time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
     print("Please note: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.")
-    
-    path = input("Insert location of csv filename: ") # /home/samantha/Documents/practice/latlon.csv
-    city = input("Insert city (case-sensitive): ")
+    path = ("input/latlon.csv")
+    city = input("Insert city (case-sensitive, e.g. Aberystwyth): ")
     lon_lat = look_in_csv(city, path)
-    #plot_map(-4.064598, 52.41616)
     try:
         plot_map(lon_lat[0], lon_lat[1], city)
     except IndexError:
