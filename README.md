@@ -40,7 +40,7 @@ Run like followed with **Linux** (find how to [run with other operating systems 
 
 **Input**
 
-Insert the FASTA of all reads and the [edited] Kaiju output in the **input** folder.
+Again, I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory - not specifically in the input folder, though if you do, you would need to type: `input/all.fa`.
 
 First the script will require information about Acidobacteria data type (all/unclassified), the location of your Kaiju results plus the FASTA file:
 
