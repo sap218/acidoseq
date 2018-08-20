@@ -37,9 +37,11 @@ def plot_map(lon, lat, city):
     m = plt.imread("input/ukphsoil.png")
     plt.imshow(m, extent=[-9,2,50,59])
     plt.axis([-9,2,50,59])
-    plt.plot(lon, lat, marker='x', markersize='10', color='white')
-    plt.axvline(x=lon, linewidth=2, color="white", alpha=95)
-    plt.axhline(y=lat, linewidth=2, color="white", alpha=95)
+    plt.plot(lon, lat, marker='o', markersize='15', color='white', mfc="none")
+    plt.axvline(x=lon, linewidth=2, color="white", alpha=96)
+    plt.axhline(y=lat, linewidth=2, color="white", alpha=96)
+
+    plt.title("Soil pH plot of location: %s" % (city.capitalize()))
 
     plt.legend(loc=3, title="pH",
         handles=[red_patch, orange_patch, lorange_patch, yellow_patch, green_patch, lblue_patch, blue_patch]) 
