@@ -80,7 +80,7 @@ You will then be prompted to provide the location of your soil sample, which you
 
 `Insert city (case-sensitive, e.g. Aberystwyth):` `Birmingham`
 
-Note: script is set-up so input city can be any case (e.g. 'liVERpool'). You will then gain an image in the output folder, which you can observe an example already. 
+Note: script is set-up so input city can be any case (e.g. `liVERpool`). You will then gain an image in the output folder, which you can observe an example already. 
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
@@ -91,6 +91,7 @@ Note: script is set-up so input city can be any case (e.g. 'liVERpool'). You wil
 - [x] Improve descriptions and comments
 - [ ] Alter code so the input file can be the original Kaiju output
 - [ ] Look into command line interface
+- [ ] Fix code to output unclassified subdivisions based on pH
 
 ## Thank you! :seedling:
 
