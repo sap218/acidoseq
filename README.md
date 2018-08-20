@@ -78,9 +78,9 @@ Finally, you will be asked about pH:
 
 You will then be prompted to provide the location of your soil sample, which you should input:
 
-`Insert city (case-sensitive, e.g. Aberystwyth):` `Liverpool`
+`Insert city (case-sensitive, e.g. Aberystwyth):` `Birmingham`
 
-You will then gain an image in that same file directory.
+Note: script is set-up so input city can be any case (e.g. 'liVERpool'). You will then gain an image in the output folder, which you can observe an example already. 
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
