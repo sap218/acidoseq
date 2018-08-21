@@ -42,38 +42,22 @@ Run like followed with **Linux** (find how to [run with other operating systems 
 
 Again, I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory - not specifically in the input folder, though if you do, you would need to type: `input/all.fa`.
 
-All outputs will deposit in the **output** file. You will be prompted for inputs throughout: e.g. style of plots, and pH of soil.
+All outputs will deposit in the **output** file, e.g. `output/acido-reads_ALL_2018-08-21_16-09-48.fa`. You will be prompted for inputs throughout: e.g. style of plots, and pH of soil. There will be various statistical outputs in the terminal: read-length, Acidobacteria coverage, and AT/GC.
 
 ###### Part 1
-`Do you wish to analyse all Acidobacteria species only or look more closely at the unclassified taxons?	('ALL' or 'U')?` 
-
-`Input here:` `ALL`
+`Analyse all Acidobacteria species or look more closely at the unclassified taxons?	('ALL' or 'U')?:` `ALL`
 
 ###### Part 2
 `Enter your Kaiju (edited) file:` `result_seqid_taxon.csv`
 
-`Acidobacteria coverage of file:` `17.04%`
-
 ###### Part 3
 `Enter the FASTA file of all reads:` `all.fa`
-
-`Successful! You can find the file here:` `output/acido-reads_ALL_2018-08-21_16-09-48.fa`
-
-`Read Lengths Min: 224	Max: 46410`
-
-`AT`	`Min: 25.950380	Max: 74.068541	Mean: 42.573709`
-
-`GC`	`Min: 25.931459	Max: 74.049620	Mean: 57.426291`
 
 ###### Part 4
 `Insert the style you want:` `ggplot`
 
 ###### Part 5
-`To observe the subdivison regions enter 'span' for means enter 'line'`
-
-`Enter plot type here:` `line`
-
-Finally, you will be asked about pH:
+`To observe the subdivison regions enter 'span' for means enter 'line':` `line`
 
 `Insert pH of soil (use the mapping script as reference):` `4.85`
 
