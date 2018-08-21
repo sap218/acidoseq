@@ -38,49 +38,53 @@ Run like followed with **Linux** (find how to [run with other operating systems 
 
 `python3 acidoseq.py`
 
-**Input**
+**Input & Output**
 
 Again, I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory - not specifically in the input folder, though if you do, you would need to type: `input/all.fa`.
 
-First the script will require information about Acidobacteria data type (all/unclassified), the location of your Kaiju results plus the FASTA file:
+All outputs will deposit in the **output** file. You will be prompted for inputs throughout: e.g. style of plots, and pH of soil.
 
-`All species or only unclassified ('all' or 'U')?` `U`
+###### Part 1
+`Do you wish to analyse all Acidobacteria species only or look more closely at the unclassified taxons?	('ALL' or 'U')?` 
 
-`Enter your Kaiju Output (edited) file:` `result_seqid_taxon.csv`
+`Input here:` `ALL`
 
+###### Part 2
+`Enter your Kaiju (edited) file:` `result_seqid_taxon.csv`
+
+`Acidobacteria coverage of file:` `17.04%`
+
+###### Part 3
 `Enter the FASTA file of all reads:` `all.fa`
 
-**Output**
+`Successful! You can find the file here:` `output/acido-reads_ALL_2018-08-21_16-09-48.fa`
 
-All outputs will deposit in the **output** file.
+`Read Lengths Min: 224	Max: 46410`
 
-The first output includes a FASTA of the reads which are Acidobacteria, either all or only the unclassified depending on your first input. 
+`AT`	`Min: 25.950380	Max: 74.068541	Mean: 42.573709`
 
-`acido-reads_U_2018-08-13_11-58-06.fa`
+`GC`	`Min: 25.931459	Max: 74.049620	Mean: 57.426291`
 
-The terminal will then provide some statistics of the data: Acidobacteria coverage, read-lengths, min/max of AT/GC, plus the means.
-
-Afterwards, you will be prompted for a plotting style (it provides you a selection of styles):
-
+###### Part 4
 `Insert the style you want:` `ggplot`
 
-For the subdivisions comparison for the GC ratio you will be asked for what kind of plot:
+###### Part 5
+`To observe the subdivison regions enter 'span' for means enter 'line'`
 
-`Enter plot type ('span' or 'line'):` `span`
+`Enter plot type here:` `line`
 
 Finally, you will be asked about pH:
 
-`Insert pH of soil:` `3.28`
-
+`Insert pH of soil (use the mapping script as reference):` `4.85`
 
 ## Map
+Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
+
+Script is set-up so input city can be any case (e.g. `liVERpool`). You will then gain an image in the output folder, which you can observe an example already. 
+
 `python3 location-map.py`
 
-You will then be prompted to provide the location of your soil sample, which you should input:
-
-`Insert city (case-sensitive, e.g. Aberystwyth):` `Birmingham`
-
-Note: script is set-up so input city can be any case (e.g. `liVERpool`). You will then gain an image in the output folder, which you can observe an example already. 
+`Insert city (e.g. Aberystwyth):` `Birmingham`
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
