@@ -357,4 +357,4 @@ if __name__ == "__main__":
 
     # Output subdivisions - this part is a working progress - please be patient :-)
 
-    output_sub(taxdump_type, ph, gc)
+    #output_sub(taxdump_type, ph, gc)
