@@ -11,6 +11,9 @@ import collections
 import matplotlib.pyplot as plt
 import random
 
+from termcolor import colored
+from colorama import init # use Colorama to make Termcolor work on Windows too
+
 import inspect, re
 
 # Kaiju input and Acidobacteria read outputs
@@ -65,12 +68,7 @@ def calculate_gc(seq):
     return (seq.lower().count("g") + seq.lower().count("c")) / len(seq) * 100.0
 
 def plot_hist(myDict, style, tax_type): 
-    try:
-        plt.style.use(style)
-    except OSError:
-        print("Style unrecognised, automatically choosing 'bmh'")
-        style = "bmh"
-        plt.style.use("bmh")
+    plt.style.use(style)
         
     plt.hist(myDict.values(), bins=1000) 
     plt.xlabel('Ratio')   
@@ -83,13 +81,13 @@ def plot_hist(myDict, style, tax_type):
     if tax_type == "U":
         ttype = "unclassified"
         plt.title('Histogram of ACGT for a collection of\n%s Acidobacteria sequences' % (ttype))
-    elif tax_type == "all":
+    elif tax_type == "ALL":
         ttype = "all"
         plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
 
     plt.grid(True)
     #plt.show()
-    plt.savefig('output/acgt-comparison_%s_style-%s_%s.png' % (ttype, style, time_stamp))
+    plt.savefig('output/acgt-comparison_%s_style-%s_%s.png' % (ttype, str(style), time_stamp))
 
 ######################################################
 
@@ -98,13 +96,7 @@ def plot_hist(myDict, style, tax_type):
 def plot_hist_gc(myDict, style, ph, plot_type, tax_type): 
     """Returns a plot of the GC ratio for a series of Acidobacteria sequences. 
     Includes the averages of the subdivisions based on the pH number."""
-    try:
-        plt.style.use(style)
-    except OSError:
-        print("Style unrecognised, automatically choosing 'bmh'")
-        style = "bmh"
-        plt.style.use("bmh")   
-    
+    plt.style.use(style) 
     ph = float(ph)
     
     plt.hist(myDict.values(), bins=1000, color="grey") 
@@ -170,7 +162,7 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
     if tax_type == "U":
         ttype = "unclassified"
         plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of %s Acidobacteria sequences' % (ph, ttype))
-    elif tax_type == "all":
+    elif tax_type == "ALL":
         ttype = "all"
         plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of Acidobacteria sequences' % (ph))
     #plt.grid(True)
@@ -220,7 +212,7 @@ def output_sub(tax_type, ph, gc_dict):
     sub23seq = {} 
     
         
-    if tax_type == "all":
+    if tax_type == "ALL":
         pass
     elif tax_type == "U":       
         for key,val in gc_dict.items():
@@ -269,15 +261,32 @@ def output_sub(tax_type, ph, gc_dict):
 
 if __name__ == "__main__":
     time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime()) 
-    
-    # Kaiju input and Acidobacteria read outputs    
-    
-    taxdump_type = input("All species or only unclassified ('all' or 'U')? ")
-    if taxdump_type == "all":
+   
+    colors = ["red", "green", "blue", "yellow", "magenta", "cyan"]   
+
+######################################################
+   
+    print(colored('Introduction', colors[0]))    
+    print("This Python 3.5 package is for the use of studying Acidobacteria.")    
+
+######################################################
+
+    print(colored('\nPart 1', colors[1]))
+    taxdump_type = input("Do you wish to analyse all Acidobacteria species only or look more closely at the unclassified taxons?\t('ALL' or 'U')?\nInput here: ")
+    while "ALL" not in taxdump_type and "U" not in taxdump_type:
+        print("Error...")
+        taxdump_type = input("Input here ('ALL' or 'U')?: ")
+    if taxdump_type == "ALL":
         taxons = load_taxondump("input/acido_taxid_all.csv") 
     if taxdump_type == "U":
-        taxons = load_taxondump("input/acido_taxid_unclassified.csv")  
-    path = input("Enter your Kaiju Output (edited) file: ") ############### REMEMBER TO PLACE IN DIRECTORY
+        taxons = load_taxondump("input/acido_taxid_unclassified.csv") 
+    
+######################################################    
+    
+    # Kaiju input    
+    print(colored('\nPart 2', colors[2]))
+    
+    path = input("As stated in the Git repository, you should alter the Kaiju Output (instructions in the README).\nEnter your Kaiju (edited) file: ") ############### REMEMBER TO PLACE IN DIRECTORY
     taxon_read_map = insert_csv(path)
 
     has_taxon = 0
@@ -288,7 +297,7 @@ if __name__ == "__main__":
     for taxon_id in taxon_read_map:
         numrec += 1
         total_reads += len(taxon_read_map[taxon_id]["reads"])
-        print("record", numrec)
+        print("Record\t%s" % (str(numrec)))
         try:
             taxon_read_map[taxon_id]["scientific_name"] = taxons[taxon_id] # finding taxID for acidobacteria
             has_taxon += len(taxon_read_map[taxon_id]["reads"])
@@ -297,17 +306,22 @@ if __name__ == "__main__":
             continue
         
     acido_coverage = percentage(has_taxon, total_reads)
-    print("\nAcidobacteria coverage of file: %.2f\n" % (acido_coverage))
+    print("\nAcidobacteria coverage of file:\t%.2f%%" % (acido_coverage))
       
-    all_fasta_path = input("Enter the FASTA file of all reads: ") ############### REMEMBER TO PLACE IN DIRECTORY
+######################################################    
+    
+    # FASTA input    
+    print(colored('\nPart 3', colors[3])) 
+    print("NOTE: please be patient throughout the rest of the script...")
+      
+    all_fasta_path = input("\nEnter the FASTA file of all reads: ") ############### REMEMBER TO PLACE IN DIRECTORY
     fasta = pysam.FastaFile(all_fasta_path)
     output_acido_file = ("output/acido-reads_%s_%s.fa" % (taxdump_type, time_stamp))
     with open(output_acido_file, "w") as output:
-        for r in acido_reads:                                                                                                   
+        for r in acido_reads:                                                                                                
             seq = fasta.fetch(reference=r) 
             output.write(">%s\n%s\n" % (r, seq))
-
-    print(output_acido_file)
+    print("Successful! You can find the file here: %s" % (output_acido_file))
     
 ######################################################
     
@@ -319,7 +333,7 @@ if __name__ == "__main__":
     reads = list_of_sequences(fasta)   
     max_read = len(max(reads, key=len))
     min_read = len(min(reads, key=len))
-    print("\n\nRead Lengths\tMin: %i\tMax: %i" % (min_read, max_read))
+    print("\nRead Lengths\tMin: %i\tMax: %i" % (min_read, max_read))
     
     at = {}
     gc = {}
@@ -333,10 +347,20 @@ if __name__ == "__main__":
     max_gc = max(gc.values())
     min_gc = min(gc.values())  
     mean_gc = (sum(gc.values())/float(len(gc.values())))
-    print("GC\tMin: %f\tMax: %f\tMean: %f\n\n" % (min_gc, max_gc, mean_gc))
+    print("GC\tMin: %f\tMax: %f\tMean: %f" % (min_gc, max_gc, mean_gc))
 
-    print(plt.style.available)
-    style = input("Insert the style you want: ")
+    print(colored('\nPart 4', colors[4])) 
+
+    print("\nHere are a list of styles available for your plots:")
+    styles = plt.style.available
+    print(styles)
+    style = input("\nInsert the style you want: ")
+    try:
+        plt.style.use(style)
+    except OSError:
+        print("Style unrecognised, automatically choosing one for you...")
+        style_int = random.randint(0,24)
+        style = styles[style_int]
     
     x = 1
     plt.figure(x)    
@@ -346,9 +370,14 @@ if __name__ == "__main__":
 ######################################################
     
     # GC ratio
+    
+    print(colored('\nPart 5', colors[5]))
 
-    plot_type = input("Enter plot type - 'span' (region) or 'line' (means): ")
-    ph = input("Insert pH of soil: ")
+    print("\nSpecifically observing the GC ratio - do you wish to observe the sequences against subdivision regions or means?")
+    print("To observe the regions enter 'span' for means enter 'line'")
+    plot_type = input("Enter plot type here: ")
+
+    ph = input("\nInsert pH of soil (use the mapping script as reference): ")
     x = 2
     plt.figure(x)    
     plot_hist_gc(gc, style, ph, plot_type, taxdump_type)
