@@ -35,9 +35,10 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 
 ## Usage
 CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. pH = 5.
+
 If plot style was entered incorrectly or none it will choose a random one.
 
-Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
+Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs)):
 
 ```
 $ python3 acidoseq.py --help
