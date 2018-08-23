@@ -9,6 +9,7 @@ import csv
 import matplotlib.pyplot as plt
 from time import gmtime, strftime
 import matplotlib.patches as mpatches
+import click
 
 def look_in_csv(city, csv_path):
     lon_lat = []
@@ -46,15 +47,13 @@ def plot_map(lon, lat, city):
     plt.legend(loc=3, title="pH",
         handles=[red_patch, orange_patch, lorange_patch, yellow_patch, green_patch, lblue_patch, blue_patch]) 
     plt.savefig('output/soil-ph_%s_%s.png' % (city, time_stamp))
-    
-##############################
 
-if __name__ == "__main__":   
-    
-    time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
+
+@click.command()
+@click.option('--city', default='Aberystwyth', help='Enter city.')  
+def main(city):
     print("Please note: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.")
     path = ("input/latlon.csv")
-    city = input("Insert city (e.g. Aberystwyth): ")
     lon_lat = look_in_csv(city, path)
     
     plt.figure(1) 
@@ -62,3 +61,9 @@ if __name__ == "__main__":
         plot_map(lon_lat[0], lon_lat[1], city)
     except IndexError:
         print("Location not in database or spelt incorrectly!")
+    
+##############################
+
+if __name__ == "__main__":   
+    time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
+    main()
