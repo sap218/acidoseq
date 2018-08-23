@@ -59,8 +59,15 @@ Options:
 ```
 
 **Example**
+`$ python3 acidoseq.py --kaijufile result_seqid_taxon.csv --fastapath all.fa`
 
 `$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
+
+`$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
+
+###### Note
+CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. ALL, line, pH = 5.
+If plot style was entered incorrectly or none it will choose a random one.
 
 ## Map
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
