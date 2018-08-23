@@ -1,6 +1,6 @@
 # acidoseq
 
-Studying Acidobacteria reads v1 | Python v3.5 
+Studying Acidobacteria reads v1.01 | Python v3.5 
 
 Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
@@ -8,7 +8,7 @@ The **GC** content of the Acidobacteria genomes are consistent with their placem
 
 The abundance of the subdivisions correlate with pH depends on the subdivisions: 1, 2, 3, 12, 13 have a negative relationship as pH increases, whilst 4, 6, 7, 10, 11, 16, 17, 18, 22, 25 are sparse in low pH and have a positive relationship as pH increases [2].
 
-This package includes assigning unclassified Acidobacteria reads you have collected into subdivisions based on the pH level of the soils. **Note**: not all set-up yet.
+This package includes studying a collection of reads and gathering the ones assigned as Acidobacteria from a Kaiju output. There are various statistical information and GC plots. Futhermore, the group of unclassified Acidobacteria reads are visualised into subdivisons based on the pH level of the soil sample.
 
 ## Introduction
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
@@ -17,13 +17,11 @@ This package includes assigning unclassified Acidobacteria reads you have collec
 - FASTA format of all the reads.
 - Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
-I would store these in the working directory, but not specifically in the input folder.
-
 ## Installation
 
 **GitClone**
 
-Note: no command line interface properly set-up as of yet: installations set up through GitClone and I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory.
+`https://github.com/sap218/acidoseq.git`
 
 **Kaiju**
 
@@ -71,9 +69,9 @@ Options:
 `$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
 
 ## Map
-Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
+All images will be in the output folder.
 
-Script is set-up so input city can be any case (e.g. `liVERpool`). You will then gain an image in the output folder, which you can observe an example already. 
+Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
 
 `python3 location-map.py`
 
