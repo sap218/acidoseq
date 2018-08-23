@@ -76,6 +76,8 @@ def calculate_gc(read):
 
 def plot_hist(myDict, style, taxdumptype): 
     plt.style.use(style)
+    #max_read = int(max(myDict.values()))
+    #min_read = int(min(myDict.values())) # random.randint(min_read, max_read)
         
     plt.hist(myDict.values(), bins=1000) 
     plt.xlabel('Ratio')   
@@ -83,7 +85,7 @@ def plot_hist(myDict, style, taxdumptype):
     
     meanDict = (sum(myDict.values())/float(len(myDict.values())))
     plt.axvline(x=meanDict, color='k')
-    plt.text(x=(meanDict+1), y=(random.randint(50,500)), s=str("%.2f" % meanDict))
+    plt.text(x=(meanDict+1), y=(random.randint(20, 200)), s=str("%.2f" % meanDict))
 
     if taxdumptype == "U":
         ttype = "unclassified"
@@ -129,40 +131,40 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
         if ph < 5:
             for si, sub in enumerate(lowph):
                 plt.axvline(lowph[sub], color=colours[si])
-                plt.text(x=(lowph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])
+                plt.text(x=(lowph[sub]+0.5), y=(random.randint(20, 200)), s=str(sub), color=colours[si])
         elif ph > 5:
             for si, sub in enumerate(highph):
                 plt.axvline(highph[sub], color=colours[si])
-                plt.text(x=(highph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])
+                plt.text(x=(highph[sub]+0.5), y=(random.randint(20, 200)), s=str(sub), color=colours[si])
         elif ph == 5:
             for si, sub in enumerate(medph):
                 plt.axvline(medph[sub], color=colours[si])
-                plt.text(x=(medph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])    
+                plt.text(x=(medph[sub]+0.5), y=(random.randint(20, 200)), s=str(sub), color=colours[si])    
                 
     elif plottype == "span": # span of GC 
         if ph < 5:
             plt.axvspan(35.18, 67.1, alpha=0.25, color='green') # 1 
-            plt.text(x=(35.18), y=(random.randint(50,500)), s="sub1", color='green')
+            plt.text(x=(35.18), y=(random.randint(20, 200)), s="sub1", color='green')
             plt.axvspan(57, 58, alpha=0.25, color='yellow') # 2 
-            plt.text(x=(57.5), y=(random.randint(50,500)), s="sub2", color='yellow')
+            plt.text(x=(57.5), y=(random.randint(20, 200)), s="sub2", color='yellow')
             plt.axvspan(51, 73, alpha=0.25, color='red') # 3
-            plt.text(x=(51), y=(random.randint(50,500)), s="sub3", color='red')
+            plt.text(x=(51), y=(random.randint(20, 200)), s="sub3", color='red')
             plt.axvspan(58, 59, alpha=0.25, color='blue') # 13
-            plt.text(x=(58), y=(random.randint(50,500)), s="sub13", color='blue')
+            plt.text(x=(58), y=(random.randint(20, 200)), s="sub13", color='blue')
         elif ph > 5:
             plt.axvspan(50, 61, alpha=0.25, color='blue') # 4 
-            plt.text(x=(50), y=(random.randint(50,500)), s="sub4", color='blue')
+            plt.text(x=(50), y=(random.randint(20, 200)), s="sub4", color='blue')
             plt.axvspan(67, 68, alpha=0.25, color='darkgreen') # 6 
-            plt.text(x=(67), y=(random.randint(50,500)), s="sub6", color='green')
+            plt.text(x=(67), y=(random.randint(20, 200)), s="sub6", color='green')
             plt.axvspan(66, 67.5, alpha=0.25, color='pink') # 22 
-            plt.text(x=(66), y=(random.randint(50,500)), s="sub22", color='red')
+            plt.text(x=(66), y=(random.randint(20, 200)), s="sub22", color='red')
         elif ph == 5:
             plt.axvspan(62.3, 68.3, alpha=0.25, color='red') # 5
-            plt.text(x=(62.5), y=(random.randint(50,500)), s="sub5", color='red')
+            plt.text(x=(62.5), y=(random.randint(20, 200)), s="sub5", color='red')
             plt.axvspan(55.14, 71.83, alpha=0.25, color='pink') # 8
-            plt.text(x=(55.5), y=(random.randint(50,500)), s="sub8", color='pink')
+            plt.text(x=(55.5), y=(random.randint(20, 200)), s="sub8", color='pink')
             plt.axvspan(62, 64, alpha=0.25, color='orange') # 23        
-            plt.text(x=(62), y=(random.randint(50,500)), s="sub23", color='orange')
+            plt.text(x=(62), y=(random.randint(20, 200)), s="sub23", color='orange')
     if taxdumptype == "U":
         ttype = "unclassified"
         plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of %s Acidobacteria sequences' % (ph, ttype))
@@ -174,14 +176,15 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
 ###############################################################################
 
 @click.command()
-@click.option('--taxdumptype', default='ALL', help='Study ALL or only unclassified (U)?')
+@click.option('--taxdumptype', default='ALL', help='Study "ALL" or only unclassified "U"?')
 @click.option('--kaijufile', help='Place edited Kaiju (csv) in directory for ease.')
 @click.option('--fastapath', help='Place FASTA in directory for ease.')
 @click.option('--style', help="['seaborn-bright', 'seaborn-poster', 'seaborn-white', 'bmh', 'seaborn-darkgrid', 'seaborn-pastel', 'grayscale', '_classic_test', 'ggplot', 'seaborn-whitegrid', 'seaborn-dark', 'seaborn-muted', 'seaborn-colorblind', 'seaborn-ticks', 'Solarize_Light2', 'seaborn-notebook', 'dark_background', 'fast', 'seaborn', 'fivethirtyeight', 'seaborn-paper', 'seaborn-dark-palette', 'seaborn-talk', 'classic', 'seaborn-deep']")
-@click.option('--plottype', default='line', help='span or line')
-@click.option('--ph', default=5, help='pH of soil, use map script for assistance.')
+@click.option('--plottype', default='line', help='"span" range of GC means OR "line" average mean GC')
+@click.option('--ph', default='5', help='pH of soil, use map script for assistance.')
 def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     colors = ["yellow", "magenta", "blue", "green"]
+    ph = float(ph)
     
     taxons = taxon_file(taxdumptype) # ALL/U
     taxon_read_map = insert_csv(kaijufile) # KAIJU
@@ -224,11 +227,14 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     fasta = pysam.FastaFile(out_path) 
 
     reads = list_of_sequences(fasta)   
-    max_read = len(max(reads, key=len))
-    min_read = len(min(reads, key=len))
+    #max_read = len(max(reads, key=len))
+    #min_read = len(min(reads, key=len))
+    lens = [len(x) for x in reads]
+    max_read = max(lens)
+    min_read = min(lens)
     
-    print(colored("\nStatistics", colors[2]))
-    print("Read Lengths\tMin: %i\tMax: %i" % (min_read, max_read))
+    print(colored("\nStatistics:", colors[2]))
+    print("Read Lengths\tMin: %d\tMax: %d" % (min_read, max_read))
     
     at = {}
     gc = {}
@@ -269,7 +275,7 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     plot_hist_gc(gc, style, ph, plottype, taxdumptype)
     
     
-    print(colored("\nAll Done!", colors[3]))
+    print(colored("\nAll Done!\n", colors[3]))
     
 ###############################################################################
 ###############################################################################

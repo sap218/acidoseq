@@ -41,7 +41,7 @@ $ python3 acidoseq.py --help
 Usage: acidoseq.py [OPTIONS]
 
 Options:
-  --taxdumptype TEXT  Study ALL or only unclassified (U)?
+  --taxdumptype TEXT  Study "ALL" or only unclassified "U"?
   --kaijufile TEXT    Place edited Kaiju (csv) in directory for ease.
   --fastapath TEXT    Place FASTA in directory for ease.
   --style TEXT        ['seaborn-bright', 'seaborn-poster', 'seaborn-white',
@@ -53,8 +53,8 @@ Options:
                       'seaborn', 'fivethirtyeight', 'seaborn-paper', 'seaborn-
                       dark-palette', 'seaborn-talk', 'classic', 'seaborn-
                       deep']
-  --plottype TEXT     span or line
-  --ph INTEGER        pH of soil, use map script for assistance.
+  --plottype TEXT     "span" range of GC means OR "line" average mean GC
+  --ph TEXT           pH of soil, use map script for assistance.
   --help              Show this message and exit.
 ```
 
