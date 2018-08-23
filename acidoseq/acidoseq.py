@@ -179,7 +179,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
 @click.option('--taxdumptype', default='ALL', help='Study "ALL" or only unclassified "U"?')
 @click.option('--kaijufile', help='Place edited Kaiju (csv) in directory for ease.')
 @click.option('--fastapath', help='Place FASTA in directory for ease.')
-@click.option('--style', help="['seaborn-bright', 'seaborn-poster', 'seaborn-white', 'bmh', 'seaborn-darkgrid', 'seaborn-pastel', 'grayscale', '_classic_test', 'ggplot', 'seaborn-whitegrid', 'seaborn-dark', 'seaborn-muted', 'seaborn-colorblind', 'seaborn-ticks', 'Solarize_Light2', 'seaborn-notebook', 'dark_background', 'fast', 'seaborn', 'fivethirtyeight', 'seaborn-paper', 'seaborn-dark-palette', 'seaborn-talk', 'classic', 'seaborn-deep']")
+@click.option('--style', default='NONE', help="['seaborn-bright', 'seaborn-poster', 'seaborn-white', 'bmh', 'seaborn-darkgrid', 'seaborn-pastel', 'grayscale', '_classic_test', 'ggplot', 'seaborn-whitegrid', 'seaborn-dark', 'seaborn-muted', 'seaborn-colorblind', 'seaborn-ticks', 'Solarize_Light2', 'seaborn-notebook', 'dark_background', 'fast', 'seaborn', 'fivethirtyeight', 'seaborn-paper', 'seaborn-dark-palette', 'seaborn-talk', 'classic', 'seaborn-deep']")
 @click.option('--plottype', default='line', help='"span" range of GC means OR "line" average mean GC')
 @click.option('--ph', default='5', help='pH of soil, use map script for assistance.')
 def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
