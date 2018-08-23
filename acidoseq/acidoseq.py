@@ -29,10 +29,10 @@ def insert_csv(file):
             dict_seqid_taxon[row[1]]["reads"].append(row[0])
     return dict_seqid_taxon # above swaps over the columns and avoids the duplicates
 
-def load_taxondump(path):
+def load_taxondump(idpath):
     """Importing the Acidobacteria taxon IDs"""
     taxons = {}
-    with open(path) as csvfile:
+    with open(idpath) as csvfile:
         reader = csv.reader(csvfile, delimiter=',') 
         for row in reader:
             taxons[row[1]] = row[0]
@@ -107,57 +107,57 @@ def plot_hist_gc(myDict, style, ph, plot_type, tax_type):
         lowph = {
             "sub1":58,
             "sub2":57.5,
-            "sub3":62,
+            "sub3":59,
             "sub13":58.5
         }
         highph = {
-            "sub4":60,
-            "sub6":68.5,
+            "sub4":60.12,
+            "sub6":67.5,
             "sub22":67
         }
         medph = {
-            "sub5":65.5, # medium
-            "sub8":66.8, # medium
+            "sub5":65.43, # medium
+            "sub8":66.84, # medium
             "sub23":63 # medium
         } 
         colours = ['b', 'r', 'y', 'g']
         if ph < 5:
             for si, sub in enumerate(lowph):
                 plt.axvline(lowph[sub], color=colours[si])
-                plt.text(x=(lowph[sub]+0.5), y=(random.randint(50,500)), s=str(sub))
+                plt.text(x=(lowph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])
         elif ph > 5:
             for si, sub in enumerate(highph):
                 plt.axvline(highph[sub], color=colours[si])
-                plt.text(x=(highph[sub]+0.5), y=(random.randint(50,500)), s=str(sub))
+                plt.text(x=(highph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])
         elif ph == 5:
             for si, sub in enumerate(medph):
                 plt.axvline(medph[sub], color=colours[si])
-                plt.text(x=(medph[sub]+0.5), y=(random.randint(50,500)), s=str(sub))    
+                plt.text(x=(medph[sub]+0.5), y=(random.randint(50,500)), s=str(sub), color=colours[si])    
                 
     elif plot_type == "span": # span of GC 
         if ph < 5:
-            plt.axvspan(35, 57, alpha=0.5, color='green') # 1 
-            plt.text(x=(35.18), y=(random.randint(50,500)), s="sub1")
-            plt.axvspan(57.5, 57.7, alpha=0.5, color='yellow') # 2 
-            plt.text(x=(57.5), y=(random.randint(50,500)), s="sub2")
-            plt.axvspan(61, 63, alpha=0.5, color='blue') # 3
-            plt.text(x=(61), y=(random.randint(50,500)), s="sub3")
-            plt.axvspan(58, 59, alpha=0.5, color='darkblue') # 13
-            plt.text(x=(58), y=(random.randint(50,500)), s="sub13")
+            plt.axvspan(35.18, 67.1, alpha=0.25, color='green') # 1 
+            plt.text(x=(35.18), y=(random.randint(50,500)), s="sub1", color='green')
+            plt.axvspan(57, 58, alpha=0.25, color='yellow') # 2 
+            plt.text(x=(57.5), y=(random.randint(50,500)), s="sub2", color='yellow')
+            plt.axvspan(51, 73, alpha=0.25, color='red') # 3
+            plt.text(x=(51), y=(random.randint(50,500)), s="sub3", color='red')
+            plt.axvspan(58, 59, alpha=0.25, color='blue') # 13
+            plt.text(x=(58), y=(random.randint(50,500)), s="sub13", color='blue')
         elif ph > 5:
-            plt.axvspan(50, 60, alpha=0.5, color='yellow') # 4 
-            plt.text(x=(50), y=(random.randint(50,500)), s="sub4")
-            plt.axvspan(67, 68, alpha=0.5, color='green') # 6 
-            plt.text(x=(67), y=(random.randint(50,500)), s="sub6")
-            plt.axvspan(66, 67.5, alpha=0.5, color='darkgreen') # 22 
-            plt.text(x=(66), y=(random.randint(50,500)), s="sub22")
+            plt.axvspan(50, 61, alpha=0.25, color='blue') # 4 
+            plt.text(x=(50), y=(random.randint(50,500)), s="sub4", color='blue')
+            plt.axvspan(67, 68, alpha=0.25, color='darkgreen') # 6 
+            plt.text(x=(67), y=(random.randint(50,500)), s="sub6", color='green')
+            plt.axvspan(66, 67.5, alpha=0.25, color='pink') # 22 
+            plt.text(x=(66), y=(random.randint(50,500)), s="sub22", color='red')
         elif ph == 5:
-            plt.axvspan(62.5, 68, alpha=0.5, color='orange') # 5
-            plt.text(x=(62.5), y=(random.randint(50,500)), s="sub5")
-            plt.axvspan(55, 66, alpha=0.5, color='pink') # 8
-            plt.text(x=(55), y=(random.randint(50,500)), s="sub8")
-            plt.axvspan(62, 64, alpha=0.5, color='red') # 23        
-            plt.text(x=(62), y=(random.randint(50,500)), s="sub23")
+            plt.axvspan(62.3, 68.3, alpha=0.25, color='red') # 5
+            plt.text(x=(62.5), y=(random.randint(50,500)), s="sub5", color='red')
+            plt.axvspan(55.14, 71.83, alpha=0.25, color='pink') # 8
+            plt.text(x=(55.5), y=(random.randint(50,500)), s="sub8", color='pink')
+            plt.axvspan(62, 64, alpha=0.25, color='orange') # 23        
+            plt.text(x=(62), y=(random.randint(50,500)), s="sub23", color='orange')
         
     if tax_type == "U":
         ttype = "unclassified"
@@ -182,19 +182,19 @@ def varname(p): # https://stackoverflow.com/a/592849
 def output_sub(tax_type, ph, gc_dict):
     ph = float(ph)    
     
-    sub1 = [35, 57] # low 
+    sub1 = [35.18, 67.1] # low 
     sub2 = [57, 58]
-    sub3 = [61, 63]
-    sub13 = [58, 61]
+    sub3 = [51, 73.35]
+    sub13 = [58, 59]
     sub12 = 63 # < 
     
-    sub4 = [50, 60] # high
+    sub4 = [50, 61] # high
     sub6 = [67, 68]
     sub22 = [65, 67.5]
     subHo = [50, 60, 64, 68] # 7, 10, 11, 14, 16, 17, 18, 25
     
-    sub5 = [64, 68] # med
-    sub8 = [55, 62]
+    sub5 = [62.3, 68.3] # med
+    sub8 = [55.14, 71.83]
     sub23 = [62, 64]
     
         
@@ -251,8 +251,8 @@ def output_sub(tax_type, ph, gc_dict):
         #    sub.append(str(varname(s)))
         sub = varname(sub6seq)
         
-        path = ("output/%s_ph%.2f_%s_%s.txt" % (sub, ph, tax_type, time_stamp))     
-        with open(path, "w") as output:
+        opath = ("output/%s_ph%.2f_%s_%s.txt" % (sub, ph, tax_type, time_stamp))     
+        with open(opath, "w") as output:
             for r in sub6seq:                    
                 output.write("%s\n" % (r))     
 
@@ -327,8 +327,8 @@ if __name__ == "__main__":
     
     # ACGT comparisons 
     
-    path = output_acido_file
-    fasta = pysam.FastaFile(path) 
+    out_path = output_acido_file
+    fasta = pysam.FastaFile(out_path) 
 
     reads = list_of_sequences(fasta)   
     max_read = len(max(reads, key=len))
