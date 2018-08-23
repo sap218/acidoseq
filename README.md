@@ -34,6 +34,9 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
 ## Usage
+CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. pH = 5.
+If plot style was entered incorrectly or none it will choose a random one.
+
 Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
 
 ```
@@ -59,15 +62,12 @@ Options:
 ```
 
 **Example**
+
 `$ python3 acidoseq.py --kaijufile result_seqid_taxon.csv --fastapath all.fa`
 
 `$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
 
 `$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
-
-###### Note
-CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. ALL, line, pH = 5.
-If plot style was entered incorrectly or none it will choose a random one.
 
 ## Map
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
