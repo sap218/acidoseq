@@ -73,7 +73,7 @@ All images will be in the output folder - default city is Aberystwyth.
 
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
 
-`python3 map.py --city Birmingham`
+`$ python3 map.py --city Birmingham`
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
