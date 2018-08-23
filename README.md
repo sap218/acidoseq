@@ -1,6 +1,6 @@
 # acidoseq
 
-Studying Acidobacteria reads | Beta Version (v0.1) | Python v3.5 
+Studying Acidobacteria reads v1 | Python v3.5 
 
 Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
@@ -36,30 +36,31 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 ## Usage
 Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs).):
 
-`python3 acidoseq.py`
+```
+$ python3 acidoseq.py --help
+Usage: acidoseq.py [OPTIONS]
 
-**Input & Output**
+Options:
+  --taxdumptype TEXT  Study ALL or only unclassified (U)?
+  --kaijufile TEXT    Place edited Kaiju (csv) in directory for ease.
+  --fastapath TEXT    Place FASTA in directory for ease.
+  --style TEXT        ['seaborn-bright', 'seaborn-poster', 'seaborn-white',
+                      'bmh', 'seaborn-darkgrid', 'seaborn-pastel',
+                      'grayscale', '_classic_test', 'ggplot', 'seaborn-
+                      whitegrid', 'seaborn-dark', 'seaborn-muted', 'seaborn-
+                      colorblind', 'seaborn-ticks', 'Solarize_Light2',
+                      'seaborn-notebook', 'dark_background', 'fast',
+                      'seaborn', 'fivethirtyeight', 'seaborn-paper', 'seaborn-
+                      dark-palette', 'seaborn-talk', 'classic', 'seaborn-
+                      deep']
+  --plottype TEXT     span or line
+  --ph INTEGER        pH of soil, use map script for assistance.
+  --help              Show this message and exit.
+```
 
-Again, I would suggest inputting the Kaiju output and the FASTA of all reads into the same directory - not specifically in the input folder, though if you do, you would need to type: `input/all.fa`.
+**Example**
 
-All outputs will deposit in the **output** file, e.g. `output/acido-reads_ALL_2018-08-21_16-09-48.fa`. You will be prompted for inputs throughout: e.g. style of plots, and pH of soil. There will be various statistical outputs in the terminal: read-length, Acidobacteria coverage, and AT/GC.
-
-###### Part 1
-`Analyse all Acidobacteria species or look more closely at the unclassified taxons?	('ALL' or 'U')?:` `ALL`
-
-###### Part 2
-`Enter your Kaiju (edited) file:` `result_seqid_taxon.csv`
-
-###### Part 3
-`Enter the FASTA file of all reads:` `all.fa`
-
-###### Part 4
-`Insert the style you want:` `ggplot`
-
-###### Part 5
-`To observe the subdivison regions enter 'span' for means enter 'line':` `line`
-
-`Insert pH of soil (use the mapping script as reference):` `4.85`
+`$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
 
 ## Map
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
@@ -77,9 +78,9 @@ Script is set-up so input city can be any case (e.g. `liVERpool`). You will then
 ###### Todo List
 - [x] Make available
 - [x] Improve descriptions and comments
-- [ ] Alter code so the input file can be the original Kaiju output
-- [ ] Look into command line interface
+- [x] Look into command line interface
 - [ ] Fix code to output unclassified subdivisions based on pH
+- [ ] Alter code so the input file can be the original Kaiju output
 
 ## Thank you! :seedling:
 
