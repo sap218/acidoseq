@@ -31,6 +31,13 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 2. Cut the columns					`$ cut -f2,3 kaijuC.out > results.txt`
 3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
+## Map
+If you are unsure of the pH of your soil samples, you may want to use the map script first. All images will be in the output folder - default city is Aberystwyth.
+
+Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
+
+`$ python3 map.py --city Birmingham`
+
 ## Usage
 CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. pH = 5.
 
@@ -67,13 +74,6 @@ Options:
 `$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
 
 `$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
-
-## Map
-All images will be in the output folder - default city is Aberystwyth.
-
-Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
-
-`$ python3 map.py --city Birmingham`
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
