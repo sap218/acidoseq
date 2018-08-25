@@ -35,7 +35,7 @@ I used the Kaiju output: columns 2 and 3 which included sequence references and 
 3. Converted the txt to csv (comma-delimted)		`$ sed 's/\s\+/,/g' results.txt > result_seqid_taxon.csv`
 
 ## Map
-If you are unsure of the pH of your soil samples, you may want to use the map script first. All images will be in the output folder - default city is Aberystwyth.
+If you are unsure of the pH of your soil samples, you may want to use the map script first - default city is Aberystwyth.
 
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
 
