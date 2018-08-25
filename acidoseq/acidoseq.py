@@ -147,7 +147,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
             plt.text(x=(35.18), y=(random.randint(20, 200)), s="sub1", color='green')
             plt.axvspan(57, 58, alpha=0.25, color='yellow') # 2 
             plt.text(x=(57.5), y=(random.randint(20, 200)), s="sub2", color='yellow')
-            plt.axvspan(51, 73, alpha=0.25, color='red') # 3
+            plt.axvspan(51, 73.35, alpha=0.25, color='red') # 3
             plt.text(x=(51), y=(random.randint(20, 200)), s="sub3", color='red')
             plt.axvspan(58, 59, alpha=0.25, color='blue') # 13
             plt.text(x=(58), y=(random.randint(20, 200)), s="sub13", color='blue')
@@ -174,6 +174,136 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
     plt.savefig('output/gc-ratio_%s_ph%.2f_plot-%s_style-%s_%s.png' % (ttype, ph, plottype, style, time_stamp))
 
 ###############################################################################
+# Subdivisions
+
+def output_sub(taxdumptype, ph, gc_dict):
+    ph = float(ph)
+    p = str(ph)
+    s = list(p)
+    s[1] = '-'
+    newph = "".join(s)
+    
+    sub1 = [35.18, 67.1] # low 
+    sub2 = [56, 59]
+    sub3 = [51, 73.35]
+    sub13 = [57, 60]
+    #sub12 = 63 # < 
+    sub4 = [49, 62] # high
+    sub6 = [66, 69]
+    sub22 = [64.5, 67.5]
+    #subHo = [50, 60, 64, 68] # 7, 10, 11, 14, 16, 17, 18, 25
+    sub5 = [62.3, 68.3] # med
+    sub8 = [55.14, 71.83]
+    sub23 = [61, 65]
+            
+    sub1seq = {} 
+    sub2seq = {}   
+    sub3seq = {} 
+    sub13seq = {} 
+    #sub12seq = {}      
+    sub4seq = {} 
+    sub6seq = {} 
+    sub22seq = {} 
+    #subHseq = {} # other high   
+    sub5seq = {} 
+    sub8seq = {} 
+    sub23seq = {}     
+            
+    if taxdumptype == "ALL":
+        pass
+    elif taxdumptype == "U":       
+        for key,val in gc_dict.items():
+            if ph < 5:    
+                if val > sub1[0] and val < sub1[1]:
+                    sub1seq[key] = val
+                elif val > sub2[0] and val < sub2[1]:         
+                    sub2seq[key] = val
+                elif val > sub3[0] and val < sub3[1]: 
+                    sub3seq[key] = val
+                elif val > sub13[0] and val < sub13[1]: 
+                    sub13seq[key] = val
+                #elif val > sub12[0]: 
+                #    sub12seq[key] = val
+            elif ph > 5:     
+                if val > sub4[0] and val < sub4[1]: 
+                    sub4seq[key] = val
+                elif val > sub6[0] and val < sub6[1]: 
+                    sub6seq[key] = val
+                elif val > sub22[0] and val < sub22[1]: 
+                    sub22seq[key] = val
+                #elif val < subHo[0] or (val > subHo[1] and val < subHo[2]) or val > subHo[3]: # others
+                #    subHseq[key] = val
+            elif ph == 5:
+                if val > sub5[0] and val < sub5[1]: 
+                    sub5seq[key] = val
+                elif val > sub8[0] and val < sub8[1]: 
+                    sub8seq[key] = val
+                elif val > sub23[0] and val < sub23[1]: 
+                    sub23seq[key] = val
+
+        if ph < 5:
+            print("Creating file for subdivision 1")
+            opath = ("output/sub1_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub1seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 2")
+            opath = ("output/sub2_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub2seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 3")
+            opath = ("output/sub3_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub3seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 13")
+            opath = ("output/sub13_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub13seq:                    
+                    output.write("%s\n" % (r))
+            #opath = ("output/sub12_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            #with open(opath, "w") as output:
+            #    for r in sub12seq:                    
+            #        output.write("%s\n" % (r))
+        elif ph > 5:
+            print("Creating file for subdivision 4")
+            opath = ("output/sub4_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub4seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 6")
+            opath = ("output/sub6_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub6seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 22")
+            opath = ("output/sub22_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "w") as output:
+                for r in sub22seq:                    
+                    output.write("%s\n" % (r))            
+            #opath = ("output/sub7-10-11-14-16-17-18-25_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            #with open(opath, "w") as output:
+            #    for r in subHseq:                    
+            #        output.write("%s\n" % (r))
+        elif ph == 5:
+            print("Creating file for subdivision 5")
+            opath = ("output/sub5_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "a") as output:
+                for r in sub5seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 8")
+            opath = ("output/sub8_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "a") as output:
+                for r in sub8seq:                    
+                    output.write("%s\n" % (r))
+            print("Creating file for subdivision 23")
+            opath = ("output/sub23_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            with open(opath, "a") as output:
+                for r in sub23seq:                    
+                    output.write("%s\n" % (r))
+
+###############################################################################
 
 @click.command()
 @click.option('--taxdumptype', default='ALL', help='Study "ALL" or only unclassified "U"?')
@@ -183,7 +313,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
 @click.option('--plottype', default='line', help='"span" range of GC means OR "line" average mean GC')
 @click.option('--ph', default='5', help='pH of soil, use map script for assistance.')
 def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
-    colors = ["yellow", "magenta", "blue", "green"]
+    colors = ["cyan", "yellow", "magenta", "blue", "green"]
     ph = float(ph)
     
     taxons = taxon_file(taxdumptype) # ALL/U
@@ -204,10 +334,15 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
             acido_reads.extend(taxon_read_map[taxon_id]["reads"])
         except KeyError:
             continue
-        
-    print(colored('\nAcidobacteria coverage of file:', colors[0])) 
-    acido_coverage = percentage(has_taxon, total_reads)
-    print("%.2f%%" % (acido_coverage))
+    
+    if taxdumptype == "ALL":
+        print(colored('\nAcidobacteria coverage of file:', colors[0])) 
+        acido_coverage = percentage(has_taxon, total_reads)
+        print("%.2f%%" % (acido_coverage))
+    elif taxdumptype == "U":
+        print(colored('\nUnclassified Acidobacteria coverage of file:', colors[0])) 
+        acido_coverage = percentage(has_taxon, total_reads)
+        print("%.2f%%" % (acido_coverage))
 
 ############################################
     #FASTA
@@ -261,10 +396,8 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
         style = styles[style_int]
     
     x = 1
-    plt.figure(x)
-    myDict = at    
+    plt.figure(x)    
     plot_hist(at, style, taxdumptype)
-    myDict = gc
     plot_hist(gc, style, taxdumptype)
     
 ############################################
@@ -274,8 +407,13 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     plt.figure(x)    
     plot_hist_gc(gc, style, ph, plottype, taxdumptype)
     
+  ############################################
+    # Subdivisions  
+    print(colored("\nExporting sequences into files of subdivisions based on pH...", colors[3]))
+    output_sub(taxdumptype, ph, gc)
     
-    print(colored("\nAll Done!\n", colors[3]))
+    
+    print(colored("\nAll Done!\n", colors[4]))
     
 ###############################################################################
 ###############################################################################
