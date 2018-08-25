@@ -80,6 +80,8 @@ Options:
 * Indepth plot of GC ratio with subdivisions labelled (regions with 'span' and means with 'line')
 * Separate txt files of the unclassified reads assigned into subdivisions based on the pH, e.g. a file of sequences which reside in the subdivison 1 GC span if the pH is low
 
+![alt text](https://github.com/sap218/acidoseq/blob/master/acidoseq/output/example/acgt-comparison_all_style-seaborn-darkgrid_2018-08-13_13-56-58.png "AT GC ratio")
+
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
 * **Sam Nicholls**, postdoc at Birmingham University, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
