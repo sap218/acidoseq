@@ -86,7 +86,7 @@ Don't hesitate to create an issue or make a suggestion!
 - [x] Make available
 - [x] Improve descriptions and comments
 - [x] Look into command line interface
-- [ ] Fix code to output unclassified subdivisions based on pH
+- [x] Fix code to output unclassified subdivisions based on pH
 - [ ] Alter code so the input file can be the original Kaiju output
 
 ###### References
