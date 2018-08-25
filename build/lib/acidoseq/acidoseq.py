@@ -6,7 +6,6 @@ Created on Mon Aug 13 11:56:11 2018
 
 import csv                                                                                                        
 import pysam  
-from time import gmtime, strftime
 import collections
 import matplotlib.pyplot as plt
 import random
@@ -95,7 +94,7 @@ def plot_hist(myDict, style, taxdumptype):
         plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
 
     plt.grid(True)
-    plt.savefig('output/acgt-comparison_%s_style-%s_%s.png' % (ttype, str(style), time_stamp))
+    plt.savefig('output/acgt-comparison_%s_style-%s.png' % (ttype, str(style)))
 
 ###############################################################################
 # GC ratio
@@ -171,7 +170,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
     elif taxdumptype == "ALL":
         ttype = "all"
         plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of Acidobacteria sequences' % (ph))
-    plt.savefig('output/gc-ratio_%s_ph%.2f_plot-%s_style-%s_%s.png' % (ttype, ph, plottype, style, time_stamp))
+    plt.savefig('output/gc-ratio_%s_ph%.2f_plot-%s_style-%s.png' % (ttype, ph, plottype, style))
 
 ###############################################################################
 # Subdivisions
@@ -243,62 +242,62 @@ def output_sub(taxdumptype, ph, gc_dict):
 
         if ph < 5:
             print("Creating file for subdivision 1")
-            opath = ("output/sub1_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub1_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub1seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 2")
-            opath = ("output/sub2_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub2_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub2seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 3")
-            opath = ("output/sub3_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub3_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub3seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 13")
-            opath = ("output/sub13_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub13_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub13seq:                    
                     output.write("%s\n" % (r))
-            #opath = ("output/sub12_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            #opath = ("output/sub12_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in sub12seq:                    
             #        output.write("%s\n" % (r))
         elif ph > 5:
             print("Creating file for subdivision 4")
-            opath = ("output/sub4_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub4_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub4seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 6")
-            opath = ("output/sub6_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub6_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub6seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 22")
-            opath = ("output/sub22_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub22_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub22seq:                    
                     output.write("%s\n" % (r))            
-            #opath = ("output/sub7-10-11-14-16-17-18-25_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            #opath = ("output/sub7-10-11-14-16-17-18-25_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in subHseq:                    
             #        output.write("%s\n" % (r))
         elif ph == 5:
             print("Creating file for subdivision 5")
-            opath = ("output/sub5_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub5_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub5seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 8")
-            opath = ("output/sub8_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub8_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub8seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 23")
-            opath = ("output/sub23_%s_ph%s_%s.txt" % (taxdumptype, newph, time_stamp))     
+            opath = ("output/sub23_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub23seq:                    
                     output.write("%s\n" % (r))
@@ -347,7 +346,7 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
 ############################################
     #FASTA
     fasta = pysam.FastaFile(fastapath) # FASTA
-    output_acido_file = ("output/acido-reads_%s_%s.fa" % (taxdumptype, time_stamp))
+    output_acido_file = ("output/acido_%s_reads.fa" % (taxdumptype))
     with open(output_acido_file, "w") as output:
         for r in acido_reads:                                                                                                
             seq = fasta.fetch(reference=r) 
@@ -420,5 +419,4 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
 ###############################################################################
 
 if __name__ == "__main__":
-    time_stamp = strftime("%Y-%m-%d_%H-%M-%S", gmtime())
     main()    
