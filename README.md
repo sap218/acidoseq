@@ -78,16 +78,16 @@ Options:
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
 * **Sam Nicholls**, postdoc at Birmingham University, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
 
+## Thank you! :seedling:
+
+Don't hesitate to create an issue or make a suggestion!
+
 ###### Todo List
 - [x] Make available
 - [x] Improve descriptions and comments
 - [x] Look into command line interface
 - [ ] Fix code to output unclassified subdivisions based on pH
 - [ ] Alter code so the input file can be the original Kaiju output
-
-## Thank you! :seedling:
-
-Don't hesitate to create an issue or make a suggestion!
 
 ###### References
 [1] Quaiser, A., Ochsenreiter, T., Lanz, C., Schuster, S. C., Treusch, A. H., Eck, J., & Schleper, C. (2003). Acidobacteria form a coherent but highly diverse group within the bacterial domain: evidence from environmental genomics. Molecular microbiology, 50(2), 563-575.
