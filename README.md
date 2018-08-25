@@ -1,6 +1,6 @@
 # acidoseq
 
-Studying Acidobacteria reads v1.01 | Python v3.5 
+Studying Acidobacteria reads from a Nanopore metagenomic data-set | v1.01 | Python v3.5 
 
 Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
