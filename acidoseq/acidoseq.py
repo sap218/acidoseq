@@ -4,6 +4,7 @@ Created on Mon Aug 13 11:56:11 2018
 @author: samantha
 """
 
+import os
 import csv                                                                                                        
 import pysam  
 import collections
@@ -31,10 +32,10 @@ def taxon_file(taxdumptype):
         print("Error...")
         taxdumptype = input("Input here ('ALL' or 'U')?: ")
     if taxdumptype == "ALL":
-        idpath = "acidoseq/input/acido_taxid_all.csv"
+        idpath = os.path.dirname(__file__)+"/input/acido_taxid_all.csv"
         taxons = load_taxondump(idpath) 
     if taxdumptype == "U":
-        idpath = "acidoseq/input/acido_taxid_unclassified.csv"
+        idpath = os.path.dirname(__file__)+"/input/acido_taxid_unclassified.csv"
         taxons = load_taxondump(idpath) 
     return taxons
 

@@ -1,2 +1,2 @@
-acidoseq/input/*
-map/input/*
+recursive-include acidoseq/input *
+recursive-include map/input *

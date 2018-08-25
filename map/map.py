@@ -5,6 +5,7 @@ Created on Wed Aug  8 13:20:01 2018
 @author: samantha
 """
 
+import os
 import csv
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -34,7 +35,7 @@ def plot_map(lon, lat, city):
     blue_patch = mpatches.Patch(color='#000280', label='> 8')
             
     city = city.lower()
-    m = plt.imread("map/input/ukphsoil.png")
+    m = plt.imread(os.path.dirname(__file__)+"/input/ukphsoil.png")
     plt.imshow(m, extent=[-9,2,50,59])
     plt.axis([-9,2,50,59])
     plt.plot(lon, lat, marker='o', markersize='15', color='white', mfc="none")
@@ -52,7 +53,7 @@ def plot_map(lon, lat, city):
 @click.option('--city', default='Aberystwyth', help='Enter city.')  
 def main(city):
     print("Please note: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.")
-    path = ("map/input/latlon.csv")
+    path = os.path.dirname(__file__)+"/input/latlon.csv"
     lon_lat = look_in_csv(city, path)
     
     plt.figure(1) 
