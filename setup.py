@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
       name='acidoseq',
-      version='1.1',
+      version='1.2',
       description='Studying Acidobacteria reads',
       url='https://github.com/sap218/acidoseq',
       author='Samanthe C Pendle',
@@ -17,5 +17,6 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent"],
       zip_safe=False,
-      entry_points = {'console_scripts': ['acidoseq=acidoseq.acidoseq:main', 'acidomap=map.map:main']}
+      entry_points = {'console_scripts': ['acidoseq=acidoseq.acidoseq:main', 'acidomap=map.map:main']},
+      include_package_data = True
 )

@@ -3,6 +3,11 @@ Data of soil pH resource is available under the Open Government Licence (OGL).
 
 Relevant key publications: Digital Object Identifiers.
 
+* Acknowledgement: Model estimates of topsoil properties [Countryside Survey] data owned by NERC – Centre for Ecology & Hydrology
+* Model estimates of topsoil properties [Countryside Survey] © Database Right/Copyright NERC – Centre for Ecology & Hydrology. All rights reserved.
+* Contains British Geological Survey material © NERC 2014. Contains Ordnance Survey data © Crown copyright and database right 2007.
+
+
 @data{10.5285/5dd624a9-55c9-4cc0-b366-d335991073c7,
         doi = {10.5285/5dd624a9-55c9-4cc0-b366-d335991073c7},
         url = {https://doi.org/10.5285/5dd624a9-55c9-4cc0-b366-d335991073c7},

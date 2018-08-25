@@ -31,10 +31,10 @@ def taxon_file(taxdumptype):
         print("Error...")
         taxdumptype = input("Input here ('ALL' or 'U')?: ")
     if taxdumptype == "ALL":
-        idpath = "input/acido_taxid_all.csv"
+        idpath = "acidoseq/input/acido_taxid_all.csv"
         taxons = load_taxondump(idpath) 
     if taxdumptype == "U":
-        idpath = "input/acido_taxid_unclassified.csv"
+        idpath = "acidoseq/input/acido_taxid_unclassified.csv"
         taxons = load_taxondump(idpath) 
     return taxons
 
@@ -94,7 +94,7 @@ def plot_hist(myDict, style, taxdumptype):
         plt.title('Histogram of ACGT for a collection of\nAcidobacteria sequences')
 
     plt.grid(True)
-    plt.savefig('output/acgt-comparison_%s_style-%s.png' % (ttype, str(style)))
+    plt.savefig('acgt-comparison_%s_style-%s.png' % (ttype, str(style)))
 
 ###############################################################################
 # GC ratio
@@ -170,7 +170,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
     elif taxdumptype == "ALL":
         ttype = "all"
         plt.title('Histogram of GC ratio of pH%.2f for a\ncollection of Acidobacteria sequences' % (ph))
-    plt.savefig('output/gc-ratio_%s_ph%.2f_plot-%s_style-%s.png' % (ttype, ph, plottype, style))
+    plt.savefig('gc-ratio_%s_ph%.2f_plot-%s_style-%s.png' % (ttype, ph, plottype, style))
 
 ###############################################################################
 # Subdivisions
@@ -242,62 +242,62 @@ def output_sub(taxdumptype, ph, gc_dict):
 
         if ph < 5:
             print("Creating file for subdivision 1")
-            opath = ("output/sub1_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub1_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub1seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 2")
-            opath = ("output/sub2_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub2_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub2seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 3")
-            opath = ("output/sub3_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub3_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub3seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 13")
-            opath = ("output/sub13_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub13_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub13seq:                    
                     output.write("%s\n" % (r))
-            #opath = ("output/sub12_%s_ph%s.txt" % (taxdumptype, newph))     
+            #opath = ("sub12_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in sub12seq:                    
             #        output.write("%s\n" % (r))
         elif ph > 5:
             print("Creating file for subdivision 4")
-            opath = ("output/sub4_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub4_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub4seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 6")
-            opath = ("output/sub6_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub6_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub6seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 22")
-            opath = ("output/sub22_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub22_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub22seq:                    
                     output.write("%s\n" % (r))            
-            #opath = ("output/sub7-10-11-14-16-17-18-25_%s_ph%s.txt" % (taxdumptype, newph))     
+            #opath = ("sub7-10-11-14-16-17-18-25_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in subHseq:                    
             #        output.write("%s\n" % (r))
         elif ph == 5:
             print("Creating file for subdivision 5")
-            opath = ("output/sub5_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub5_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub5seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 8")
-            opath = ("output/sub8_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub8_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub8seq:                    
                     output.write("%s\n" % (r))
             print("Creating file for subdivision 23")
-            opath = ("output/sub23_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub23_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub23seq:                    
                     output.write("%s\n" % (r))
@@ -346,12 +346,12 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
 ############################################
     #FASTA
     fasta = pysam.FastaFile(fastapath) # FASTA
-    output_acido_file = ("output/acido_%s_reads.fa" % (taxdumptype))
+    output_acido_file = ("acido_%s_reads.fa" % (taxdumptype))
     with open(output_acido_file, "w") as output:
         for r in acido_reads:                                                                                                
             seq = fasta.fetch(reference=r) 
             output.write(">%s\n%s\n" % (r, seq))
-    print(colored("\nSuccessful! You can find the file here:", colors[1])) 
+    print(colored("\nSuccessful! The file name:", colors[1])) 
     print("%s" % (output_acido_file))
     
 ############################################

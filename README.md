@@ -20,11 +20,11 @@ This package includes studying a collection of reads and gathering the ones assi
 
 **GitClone**
 
-`https://github.com/sap218/acidoseq.git`
+`$ git clone https://github.com/sap218/acidoseq.git`
 
 **pip**
 
-`pip install acidoseq`
+`$ pip install acidoseq`
 
 **Kaiju**
 
@@ -39,7 +39,7 @@ If you are unsure of the pH of your soil samples, you may want to use the map sc
 
 Please **note**: due to the fact that the Earth is spherical and maps are 2-dimensional, there will be some distortion when plotting locations.
 
-`$ python3 map.py --city Birmingham`
+`$ acidomap --city Birmingham`
 
 ## Usage
 CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. pH = 5.
@@ -49,7 +49,7 @@ If plot style was entered incorrectly or none it will choose a random one.
 Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs)):
 
 ```
-$ python3 acidoseq.py --help
+$ acidoseq --help
 Usage: acidoseq.py [OPTIONS]
 
 Options:
@@ -72,11 +72,11 @@ Options:
 
 ###### Examples
 
-`$ python3 acidoseq.py --kaijufile result_seqid_taxon.csv --fastapath all.fa`
+`$ acidoseq --kaijufile result_seqid_taxon.csv --fastapath all.fa`
 
-`$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
+`$ acidoseq --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
 
-`$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
+`$ acidoseq --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
 
 **Output**
 * FASTA file: collection of reads which were identified as Acidobacteria
