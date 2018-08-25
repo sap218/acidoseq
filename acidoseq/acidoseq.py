@@ -407,12 +407,18 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     plt.figure(x)    
     plot_hist_gc(gc, style, ph, plottype, taxdumptype)
     
-  ############################################
+############################################
     # Subdivisions  
-    print(colored("\nExporting sequences into files of subdivisions based on pH...", colors[3]))
+
+    if taxdumptype == "ALL":
+        pass
+    elif taxdumptype == "U":
+        print(colored("\nExporting sequences into files of subdivisions based on pH...", colors[3]))
+
     output_sub(taxdumptype, ph, gc)
     
-    
+############################################
+
     print(colored("\nAll Done!\n", colors[4]))
     
 ###############################################################################
