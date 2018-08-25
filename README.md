@@ -22,6 +22,10 @@ This package includes studying a collection of reads and gathering the ones assi
 
 `https://github.com/sap218/acidoseq.git`
 
+**pip**
+
+`pip install acidoseq`
+
 **Kaiju**
 
 I used the Kaiju output: columns 2 and 3 which included sequence references and the NCBI taxons.
