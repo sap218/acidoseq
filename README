@@ -13,8 +13,8 @@ This package includes studying a collection of reads and gathering the ones assi
 [**Kaiju**](http://kaiju.binf.ku.dk) output provides taxon ID and the corredponding sequence, my package outputs the Acidobacteria species alongside annotation, plots, and information on the unclassified reads.
 
 ###### Prerequisite
-- FASTA format of all the reads.
-- Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
+* FASTA format of all the reads.
+* Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
 ## Installation
 
@@ -66,13 +66,21 @@ Options:
   --help              Show this message and exit.
 ```
 
-**Example**
+###### Examples
 
 `$ python3 acidoseq.py --kaijufile result_seqid_taxon.csv --fastapath all.fa`
 
 `$ python3 acidoseq.py --taxdumptype ALL --kaijufile result_seqid_taxon.csv --fastapath all.fa --style ggplot --plottype span --ph 4.92`
 
 `$ python3 acidoseq.py --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
+
+**Output**
+* FASTA file: collection of reads which were identified as Acidobacteria
+* Plot of AT and GC ratio comparison with means 
+* Indepth plot of GC ratio with subdivisions labelled (regions with 'span' and means with 'line')
+* Separate txt files of the unclassified reads assigned into subdivisions based on the pH, e.g. a file of sequences which reside in the subdivison 1 GC span if the pH is low
+
+![alt text](https://github.com/sap218/acidoseq/blob/master/acidoseq/output/example/acgt-comparison_all_style-seaborn-darkgrid_2018-08-13_13-56-58.png "AT GC ratio")
 
 ## Acknowledgements
 * **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
