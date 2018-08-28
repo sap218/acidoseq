@@ -176,7 +176,7 @@ def plot_hist_gc(myDict, style, ph, plottype, taxdumptype):
 ###############################################################################
 # Subdivisions
 
-def output_sub(taxdumptype, ph, gc_dict):
+def output_sub(taxdumptype, ph, gc_dict, fasta):
     ph = float(ph)
     p = str(ph)
     s = list(p)
@@ -184,17 +184,17 @@ def output_sub(taxdumptype, ph, gc_dict):
     newph = "".join(s)
     
     sub1 = [35.18, 67.1] # low 
-    sub2 = [56, 59]
+    sub2 = [55, 60]
     sub3 = [51, 73.35]
-    sub13 = [57, 60]
+    sub13 = [57, 62]
     #sub12 = 63 # < 
     sub4 = [49, 62] # high
-    sub6 = [66, 69]
-    sub22 = [64.5, 67.5]
+    sub6 = [65, 70]
+    sub22 = [63, 68]
     #subHo = [50, 60, 64, 68] # 7, 10, 11, 14, 16, 17, 18, 25
-    sub5 = [62.3, 68.3] # med
+    sub5 = [62, 69] # med
     sub8 = [55.14, 71.83]
-    sub23 = [61, 65]
+    sub23 = [60, 65]
             
     sub1seq = {} 
     sub2seq = {}   
@@ -242,66 +242,86 @@ def output_sub(taxdumptype, ph, gc_dict):
                     sub23seq[key] = val
 
         if ph < 5:
+            seq = []
             print("Creating file for subdivision 1")
             opath = ("sub1_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
-                for r in sub1seq:                    
-                    output.write("%s\n" % (r))
+                for r in sub1seq:      
+                    seq = fasta.fetch(reference=r)              
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 2")
             opath = ("sub2_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub2seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r)
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 3")
             opath = ("sub3_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub3seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r)
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 13")
             opath = ("sub13_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub13seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r)
+                    output.write(">%s\n%s\n" % (r, seq))
             #opath = ("sub12_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in sub12seq:                    
             #        output.write("%s\n" % (r))
         elif ph > 5:
+            seq = []
             print("Creating file for subdivision 4")
             opath = ("sub4_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
-                for r in sub4seq:                    
-                    output.write("%s\n" % (r))
+                for r in sub4seq:   
+                    seq = fasta.fetch(reference=r)                 
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 6")
             opath = ("sub6_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
-                for r in sub6seq:                    
-                    output.write("%s\n" % (r))
+                for r in sub6seq:
+                    seq = fasta.fetch(reference=r)                    
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 22")
             opath = ("sub22_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "w") as output:
-                for r in sub22seq:                    
-                    output.write("%s\n" % (r))            
+                for r in sub22seq:      
+                    seq = fasta.fetch(reference=r)              
+                    output.write(">%s\n%s\n" % (r, seq))           
             #opath = ("sub7-10-11-14-16-17-18-25_%s_ph%s.txt" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in subHseq:                    
             #        output.write("%s\n" % (r))
         elif ph == 5:
+            seq = []
             print("Creating file for subdivision 5")
             opath = ("sub5_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub5seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r) 
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 8")
             opath = ("sub8_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub8seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r) 
+                    output.write(">%s\n%s\n" % (r, seq))
+            seq = []
             print("Creating file for subdivision 23")
             opath = ("sub23_%s_ph%s.txt" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub23seq:                    
-                    output.write("%s\n" % (r))
+                    seq = fasta.fetch(reference=r) 
+                    output.write(">%s\n%s\n" % (r, seq))
 
 ###############################################################################
 
@@ -415,7 +435,7 @@ def main(taxdumptype, kaijufile, fastapath, style, plottype, ph):
     elif taxdumptype == "U":
         print(colored("\nExporting sequences into files of subdivisions based on pH...", colors[3]))
 
-    output_sub(taxdumptype, ph, gc)
+    output_sub(taxdumptype, ph, gc, fasta)
     
 ############################################
 
