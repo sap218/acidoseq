@@ -183,18 +183,18 @@ def output_sub(taxdumptype, ph, gc_dict, fasta):
     s[1] = '-'
     newph = "".join(s)
     
-    sub1 = [35.18, 67.1] # low 
-    sub2 = [55, 60]
-    sub3 = [51, 73.35]
-    sub13 = [57, 62]
+    sub1 = [35.18, 52, 53, 57, 59, 63] # low 
+    sub2 = [57, 58]
+    sub3 = [52, 53, 63, 73.35]
+    sub13 = [58, 63]
     #sub12 = 63 # < 
-    sub4 = [49, 62] # high
-    sub6 = [65, 70]
-    sub22 = [63, 68]
+    sub4 = [50.5, 64] # high
+    sub6 = [67, 68]
+    sub22 = [64, 67]
     #subHo = [50, 60, 64, 68] # 7, 10, 11, 14, 16, 17, 18, 25
-    sub5 = [62, 69] # med
-    sub8 = [55.14, 71.83]
-    sub23 = [60, 65]
+    sub5 = [64, 70] # med
+    sub8 = [55.14, 62, 70, 71.83]
+    sub23 = [62, 64]
             
     sub1seq = {} 
     sub2seq = {}   
@@ -214,11 +214,11 @@ def output_sub(taxdumptype, ph, gc_dict, fasta):
     elif taxdumptype == "U":       
         for key,val in gc_dict.items():
             if ph < 5:    
-                if val > sub1[0] and val < sub1[1]:
+                if val > sub1[0] and val < sub1[1] or val > sub1[2] and val < sub1[3] or val > sub1[4] and val < sub1[5]:
                     sub1seq[key] = val
                 elif val > sub2[0] and val < sub2[1]:         
                     sub2seq[key] = val
-                elif val > sub3[0] and val < sub3[1]: 
+                elif val > sub3[0] and val < sub3[1] or val > sub3[2] and val < sub3[3]: 
                     sub3seq[key] = val
                 elif val > sub13[0] and val < sub13[1]: 
                     sub13seq[key] = val
@@ -236,7 +236,7 @@ def output_sub(taxdumptype, ph, gc_dict, fasta):
             elif ph == 5:
                 if val > sub5[0] and val < sub5[1]: 
                     sub5seq[key] = val
-                elif val > sub8[0] and val < sub8[1]: 
+                elif val > sub8[0] and val < sub8[1] or val > sub8[2] and val < sub8[3]: 
                     sub8seq[key] = val
                 elif val > sub23[0] and val < sub23[1]: 
                     sub23seq[key] = val
