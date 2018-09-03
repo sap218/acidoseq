@@ -16,6 +16,19 @@ This package includes studying a collection of reads and gathering the ones assi
 * FASTA format of all the reads.
 * Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
+###### Dependencies
+* os
+* csv                                                                                                        
+* pysam  
+* collections
+* matplotlib (matplotlib.pyplot, matplotlib.patches)
+* random
+* termcolor 
+* colorama
+* click
+
+`$ pip3 install matplotlib`
+
 ## Installation
 
 **GitClone**
