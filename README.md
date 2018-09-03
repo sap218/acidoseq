@@ -17,15 +17,18 @@ This package includes studying a collection of reads and gathering the ones assi
 * Kaiju output after extracting the two columns: sequence ID and NCBI taxIDs.
 
 ###### Dependencies
-* os
-* csv                                                                                                        
-* pysam  
-* collections
-* matplotlib (matplotlib.pyplot, matplotlib.patches)
-* random
-* termcolor 
-* colorama
-* click
+```
+import os
+import csv                                                                                                        
+import pysam  
+import collections
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import random
+from termcolor import colored
+from colorama import init 
+import click
+```
 
 `$ pip3 install matplotlib`
 
@@ -63,7 +66,7 @@ Run like followed with **Linux** (find how to [run with other operating systems 
 
 ```
 $ acidoseq --help
-Usage: acidoseq.py [OPTIONS]
+Usage: acidoseq [OPTIONS]
 
 Options:
   --taxdumptype TEXT  Study "ALL" or only unclassified "U"?
