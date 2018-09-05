@@ -244,80 +244,80 @@ def output_sub(taxdumptype, ph, gc_dict, fasta):
         if ph < 5:
             seq = []
             print("Creating file for subdivision 1")
-            opath = ("sub1_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub1_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub1seq:      
                     seq = fasta.fetch(reference=r)              
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 2")
-            opath = ("sub2_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub2_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub2seq:                    
                     seq = fasta.fetch(reference=r)
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 3")
-            opath = ("sub3_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub3_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub3seq:                    
                     seq = fasta.fetch(reference=r)
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 13")
-            opath = ("sub13_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub13_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub13seq:                    
                     seq = fasta.fetch(reference=r)
                     output.write(">%s\n%s\n" % (r, seq))
-            #opath = ("sub12_%s_ph%s.txt" % (taxdumptype, newph))     
+            #opath = ("sub12_%s_ph%s.fasta" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in sub12seq:                    
             #        output.write("%s\n" % (r))
         elif ph > 5:
             seq = []
             print("Creating file for subdivision 4")
-            opath = ("sub4_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub4_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub4seq:   
                     seq = fasta.fetch(reference=r)                 
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 6")
-            opath = ("sub6_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub6_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub6seq:
                     seq = fasta.fetch(reference=r)                    
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 22")
-            opath = ("sub22_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub22_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "w") as output:
                 for r in sub22seq:      
                     seq = fasta.fetch(reference=r)              
                     output.write(">%s\n%s\n" % (r, seq))           
-            #opath = ("sub7-10-11-14-16-17-18-25_%s_ph%s.txt" % (taxdumptype, newph))     
+            #opath = ("sub7-10-11-14-16-17-18-25_%s_ph%s.fasta" % (taxdumptype, newph))     
             #with open(opath, "w") as output:
             #    for r in subHseq:                    
             #        output.write("%s\n" % (r))
         elif ph == 5:
             seq = []
             print("Creating file for subdivision 5")
-            opath = ("sub5_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub5_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub5seq:                    
                     seq = fasta.fetch(reference=r) 
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 8")
-            opath = ("sub8_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub8_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub8seq:                    
                     seq = fasta.fetch(reference=r) 
                     output.write(">%s\n%s\n" % (r, seq))
             seq = []
             print("Creating file for subdivision 23")
-            opath = ("sub23_%s_ph%s.txt" % (taxdumptype, newph))     
+            opath = ("sub23_%s_ph%s.fasta" % (taxdumptype, newph))     
             with open(opath, "a") as output:
                 for r in sub23seq:                    
                     seq = fasta.fetch(reference=r) 

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
       name='acidoseq',
-      version='1.3.5',
+      version='1.3.6',
       description='Studying Acidobacteria reads',
       url='https://github.com/sap218/acidoseq',
       author='Samanthe C Pendle',
