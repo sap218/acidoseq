@@ -4,6 +4,8 @@ Studying Acidobacteria reads from a Nanopore metagenomic data-set | Python v3.5 
 
 Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
+Follow the Twitter bot I created, [acidobot](https://twitter.com/acido_bot), that dispenses weekly facts about Acidobacteria!
+
 The **GC** content of the Acidobacteria genomes are consistent with their placements, e.g. species in the same subdivision (above 60\% for group V fragments and roughly 10\% lower for group III fragments) are similar, displaying the diversity within the phylum [1].
 The abundance of the subdivisions correlate with pH depends on the subdivisions: 1, 2, 3, 12, 13 have a negative relationship as pH increases, whilst 4, 6, 7, 10, 11, 16, 17, 18, 22, 25 are sparse in low pH and have a positive relationship as pH increases [2].
 
