@@ -1,10 +1,10 @@
 # acidoseq
 
-Studying Acidobacteria reads from a Nanopore metagenomic data-set | Python v3.5 | [PyPI](https://pypi.org/project/acidoseq/) (see version)
+Studying Acidobacteria reads from a **Nanopore** metagenomic data-set | **Python v3.5** | [PyPI](https://pypi.org/project/acidoseq/) (see version)
 
-Author __Samantha C Pendleton__, Data Science MSc student at Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
+Author __Samantha C Pendleton__, Data Science MSc Aberystwyth University, [Twitter](https://twitter.com/sap218) | [GitHub](https://github.com/sap218)
 
-Follow the Twitter bot I created, [acidobot](https://twitter.com/acido_bot), that dispenses weekly facts about Acidobacteria!
+Follow the Twitter bot I created, [acido_bot](https://twitter.com/acido_bot), that dispenses daily facts about Acidobacteria!
 
 The **GC** content of the Acidobacteria genomes are consistent with their placements, e.g. species in the same subdivision (above 60\% for group V fragments and roughly 10\% lower for group III fragments) are similar, displaying the diversity within the phylum [1].
 The abundance of the subdivisions correlate with pH depends on the subdivisions: 1, 2, 3, 12, 13 have a negative relationship as pH increases, whilst 4, 6, 7, 10, 11, 16, 17, 18, 22, 25 are sparse in low pH and have a positive relationship as pH increases [2].
@@ -60,9 +60,9 @@ Please **note**: due to the fact that the Earth is spherical and maps are 2-dime
 `$ acidomap --city Birmingham`
 
 ## Usage
-CLI **needs** the Kaiju and FASTA files, all other options have defaults: e.g. pH = 5.
+CLI **needs** the Kaiju and FASTA file, all other options have defaults: e.g. pH = 5.
 
-If plot style was entered incorrectly or none it will choose a random one.
+If no plot style was provided, or entered incorrectly, it will choose a random one.
 
 Run like followed with **Linux** (find how to [run with other operating systems here](https://en.wikibooks.org/wiki/Python_Programming/Creating_Python_Programs)):
 
@@ -97,14 +97,15 @@ Options:
 `$ acidoseq --taxdumptype U --kaijufile result_seqid_taxon.csv --fastapath all.fa --style seaborn --plottype line --ph 7.14`
 
 **Output**
-* FASTA file: collection of reads which were identified as Acidobacteria
+* FASTA file: a collection of reads which were identified as Acidobacteria
 * Plot of AT and GC ratio comparison with means 
 * Indepth plot of GC ratio with subdivisions labelled (regions with 'span' and means with 'line')
-* Separate txt files of the unclassified reads assigned into subdivisions based on the pH, e.g. a file of sequences which reside in the subdivison 1 GC span if the pH is low
+* Separate FASTA files of the unclassified reads assigned into subdivisions based on the pH, e.g. a file of sequences which reside in the subdivison 1 GC span if the pH is low
 
 ## Acknowledgements
-* **Amanda Clare**, supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare)
-* **Sam Nicholls**, postdoc at Birmingham University, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
+* **Amanda Clare**, senior lecturer, MSc supervisor at Aberystwyth University, [Twitter](https://twitter.com/afcaber) | [GitHub](https://github.com/amandaclare) | [Staff Profile](https://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/afc/)
+* **Sam Nicholls**, postdoc at University of Birmingham, [Twitter](https://twitter.com/samstudio8) | [GitHub](https://github.com/SamStudio8)
+* **Arwyn Edwards**, senior lecturer at Aberystwyth University, provided the data-set, [Twitter](https://twitter.com/arwynedwards) | [Staff Profile](https://www.aber.ac.uk/en/ibers/staff-profiles/listing/profile/aye/)
 
 ## Thank you! :seedling:
 
@@ -116,6 +117,7 @@ Don't hesitate to create an issue or make a suggestion!
 - [x] Look into command line interface
 - [x] Fix code to output unclassified subdivisions based on pH
 - [ ] Alter code so the input file can be the original Kaiju output
+- [ ] Make available on Conda
 
 ###### References
 [1] Quaiser, A., Ochsenreiter, T., Lanz, C., Schuster, S. C., Treusch, A. H., Eck, J., & Schleper, C. (2003). Acidobacteria form a coherent but highly diverse group within the bacterial domain: evidence from environmental genomics. Molecular microbiology, 50(2), 563-575.
